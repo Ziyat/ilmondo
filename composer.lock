@@ -3192,12 +3192,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "60c53d399ebf12cac9b8daa1fa9d81b8b1ee9a91"
+                "reference": "cafe77aa35eadb865cb1b6670bafdc19a1034ab2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/60c53d399ebf12cac9b8daa1fa9d81b8b1ee9a91",
-                "reference": "60c53d399ebf12cac9b8daa1fa9d81b8b1ee9a91",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/cafe77aa35eadb865cb1b6670bafdc19a1034ab2",
+                "reference": "cafe77aa35eadb865cb1b6670bafdc19a1034ab2",
                 "shasum": ""
             },
             "require": {
@@ -3233,7 +3233,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2018-07-11T19:23:16+00:00"
+            "time": "2018-09-11T22:31:58+00:00"
         }
     ],
     "aliases": [],

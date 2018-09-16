@@ -627,3 +627,43 @@
     })();
         
 })(jQuery);
+
+$(function(){
+     $('.slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.slider_nav'
+    });
+//     $('.slider_nav').slick({
+//         slidesToShow: 4,
+//         slidesToScroll: 1,
+//         asNavFor: '.slider',
+//         centerMode: true,
+//         focusOnSelect: true,
+//         vertical: true
+// });
+    $('.slider_imgcontent').zoom();
+    var mql = window.matchMedia('all and (max-width: 479px)');
+    if (mql.matches) {
+        $('.slider_nav').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            asNavFor: '.slider',
+            centerMode: true,
+            focusOnSelect: true,
+            vertical: true
+        });
+    } else {
+        $('.slider_nav').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            asNavFor: '.slider',
+            centerMode: true,
+            focusOnSelect: true,
+            centerPadding: '0px',
+            vertical: true
+        });
+    }
+});
