@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/jquery-3.2.1.min.js',
+        'jquery.zoom.min.js',
         'js/plugins.js',
         'js/main.js',
     ];
