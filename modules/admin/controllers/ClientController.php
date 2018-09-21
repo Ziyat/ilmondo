@@ -71,7 +71,7 @@ class ClientController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->clients->find($id),
+            'client' => $this->clients->find($id),
         ]);
     }
 

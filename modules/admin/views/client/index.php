@@ -13,8 +13,6 @@ $this->title = 'Клиенты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="client-index">
-
-
     <p>
         <?= Html::a('Добавить клиента', ['create'], ['class' => 'btn btn-flat btn-success']) ?>
     </p>
@@ -29,19 +27,37 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'attribute' => 'avatar',
                     'value' => function (Client $model) {
-                        return Html::img($model->getThumbFileUrl('avatar', 'admin', Yii::getAlias('@noAvatar')));
+                        return Html::img(
+                            $model->getThumbFileUrl(
+                                'avatar',
+                                'admin',
+                                Yii::getAlias('@noAvatar')
+                            ),
+                            [
+                                'class' => 'img-circle'
+                            ]
+                        );
                     },
                     'format' => 'raw'
                 ],
                 [
                     'attribute' => 'name',
                     'value' => function (Client $model) {
-                        return Html::a($model->name . ' ' . $model->last_name, Url::to(['/admin/client/view', 'id' => $model->id]));
+                        return Html::a(
+                            $model->name . ' ' . $model->last_name,
+                            Url::to(
+                                [
+                                    '/admin/client/view',
+                                    'id' => $model->id
+                                ]
+                            )
+                        );
                     },
                     'format' => 'raw'
                 ],
                 'phone',
                 'email:email',
+                'address_line_1',
             ],
         ]);
     } catch (\Exception $e) {
