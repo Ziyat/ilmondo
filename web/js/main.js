@@ -648,14 +648,16 @@
     //     centerPadding: '0px',
     //     vertical: true
     // });
-
+    $('.zoomImg').zoom()
     $('.productsSliderFor').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
         fade: true,
         asNavFor: '.productsSliderNav',
-        mobileFirst: true
+        mobileFirst: true,
+        responsive:true
+
     });
 
     $('.productsSliderNav').slick({
@@ -666,8 +668,7 @@
         centerMode: true,
         focusOnSelect: true,
         arrows: false,
-        mobileFirst: true,
-        centerPadding: 20
+        mobileFirst: true
     });
-        
+
 })(jQuery);

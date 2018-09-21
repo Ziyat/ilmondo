@@ -6,19 +6,21 @@
 
 ?>
 
-<div class="row">
+<div class="row  productColFull">
     <div class="col-six">
         <div class="slider productsSliderFor">
-            <div><img src="/images/products/demo1.png" alt=""></div>
-            <div><img src="/images/products/demo2.png" alt=""></div>
-            <div><img src="/images/products/demo3.png" alt=""></div>
-            <div><img src="/images/products/populate1.jpg" alt=""></div>
+            <div class="zoomImg"><img src="/images/products/demo1.png" alt=""></div>
+            <div class="zoomImg"><img src="/images/products/demo2.png" alt=""></div>
+            <div class="zoomImg"><img src="/images/products/demo3.png" alt=""></div>
+            <div class="zoomImg"><img src="/images/products/demo2.png" alt=""></div>
+            <div class="zoomImg"><img src="/images/products/demo2.png" alt=""></div>
         </div>
-        <div class="slider productsSliderNav">
+        <div class="slider productsSliderNav ">
             <div><img src="/images/products/demo1.png" alt=""></div>
             <div><img src="/images/products/demo2.png" alt=""></div>
             <div><img src="/images/products/demo3.png" alt=""></div>
-            <div><img src="/images/products/populate1.jpg" alt=""></div>
+            <div><img src="/images/products/demo2.png" alt=""></div>
+            <div><img src="/images/products/demo2.png" alt=""></div>
         </div>
     </div>
 

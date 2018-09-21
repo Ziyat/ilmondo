@@ -1174,7 +1174,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     padding-left: 10px;
 }
 .pokupka h2{
-
+    margin-top: 0;
     display: inline-block;
 }
 .price h3{
@@ -1183,7 +1183,46 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     display: inline;
     padding-left: 10px;
 }
-@media only screen and (max-width: 600px) {
+.productsSliderNav .slick-slide {
+    margin: 10px 10px;
+}
+/* the parent */
+.slick-list {
+    margin: -10px -10px;
+}
+.productsSliderFor {
+    max-width: 400px;
+}
+.productsSliderNav{
+    max-width: 400px;
+}
+.productsSliderNav .slick-slide{
+    max-width: 100px;
+    opacity: 0.7;
+}
+.productsSliderNav .slick-current{
+    opacity: 1;
+}
+@media only screen and (max-width: 500px) {
+    .productColFull .col-six{
+        width: 100% !important;
+        float: none !important;
+        clear: both !important;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+    .productsSliderFor {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .productsSliderNav{
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .pokupka {
+        text-align: center;
+    }
     .pokupka h2{
         margin-top: 20px;
     }
