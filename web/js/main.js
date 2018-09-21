@@ -625,45 +625,49 @@
         clGoogleMap();
 
     })();
-        
-})(jQuery);
 
-$(function(){
-     $('.slider').slick({
+    //products slider
+
+    // $('.slider').slick({
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     arrows: false,
+    //     fade: true,
+    //     asNavFor: '.slider_nav'
+    // });
+
+    // $('.slider_imgcontent').zoom();
+
+    // $('.slider_nav').slick({
+    //     arrows: false,
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     asNavFor: '.slider',
+    //     centerMode: true,
+    //     focusOnSelect: true,
+    //     centerPadding: '0px',
+    //     vertical: true
+    // });
+
+    $('.productsSliderFor').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
         fade: true,
-        asNavFor: '.slider_nav'
+        asNavFor: '.productsSliderNav',
+        mobileFirst: true
     });
-//     $('.slider_nav').slick({
-//         slidesToShow: 4,
-//         slidesToScroll: 1,
-//         asNavFor: '.slider',
-//         centerMode: true,
-//         focusOnSelect: true,
-//         vertical: true
-// });
-    $('.slider_imgcontent').zoom();
-    var mql = window.matchMedia('all and (max-width: 479px)');
-    if (mql.matches) {
-        $('.slider_nav').slick({
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            asNavFor: '.slider',
-            centerMode: true,
-            focusOnSelect: true,
-            vertical: true
-        });
-    } else {
-        $('.slider_nav').slick({
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            asNavFor: '.slider',
-            centerMode: true,
-            focusOnSelect: true,
-            centerPadding: '0px',
-            vertical: true
-        });
-    }
-});
+
+    $('.productsSliderNav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.productsSliderFor',
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true,
+        arrows: false,
+        mobileFirst: true,
+        centerPadding: 20
+    });
+        
+})(jQuery);
