@@ -132,6 +132,9 @@ a:hover, a:active {
  * # typography & general theme styles
  * 
  * ------------------------------------------------------------------- */
+p{
+    margin-bottom: 3rem!important;
+}
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "EB Garamond", serif;
     color: #000000;
