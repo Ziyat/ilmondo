@@ -37,8 +37,7 @@ $config = [
             ],
         ],
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'W-Q18LhMGJ3L7Eq-zFeF6oq6WaPd61Yf',
+            'cookieValidationKey' => '1O3KI3VfjCB72twDUisvSuNAokClCJk0',
             'baseUrl' => ''
         ],
         'cache' => [
@@ -75,7 +74,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
-                '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
+                '<_a:about|contact|brand>' => 'site/<_a>',
             ],
         ],
 

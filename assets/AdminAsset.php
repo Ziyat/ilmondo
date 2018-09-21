@@ -19,6 +19,9 @@ class AdminAsset extends AssetBundle
 {
     public $sourcePath = '@vendor/almasaeed2010/adminlte';
     public $js = [
+        'plugins/input-mask/jquery.inputmask.js',
+        'plugins/input-mask/jquery.inputmask.phone.extensions.js',
+        'plugins/input-mask/jquery.inputmask.date.extensions.js',
     ];
     public $css = [
         'bower_components/font-awesome/css/font-awesome.min.css',
