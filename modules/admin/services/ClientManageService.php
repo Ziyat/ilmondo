@@ -90,4 +90,9 @@ class ClientManageService
         $client = $this->clients->find($id);
         $this->clients->remove($client);
     }
+
+    public function assignClient()
+    {
+
+    }
 }
