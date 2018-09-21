@@ -1129,10 +1129,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 /*------------------------------------------------------------------
                         project content
 --------------------------------------------------------------------*/
-.produkt{
-    padding-top: 0!important;
 
-}
 .modelcontent{
     padding-bottom: 400px;
     background-color: white;
