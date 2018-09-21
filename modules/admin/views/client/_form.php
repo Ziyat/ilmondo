@@ -1,48 +1,65 @@
 <?php
 
+use kartik\file\FileInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\admin\entities\Client */
+/* @var $model app\modules\admin\forms\ClientForm */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $client app\modules\admin\entities\Client */
+
 ?>
+<?php $form = ActiveForm::begin(); ?>
+    <div class="col-md-8">
+        <div class="box">
+            <div class="box-body">
 
-<div class="client-form">
+                <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+                <?= $form->field($model, 'last_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'address_line_1')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'last_name')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'address_line_2')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'address_line_1')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'date_of_birth')->textInput() ?>
 
-    <?= $form->field($model, 'address_line_2')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'date_of_birth')->textInput() ?>
+                <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'params')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'params')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'avatar')->textInput(['maxlength' => true]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            </div>
+        </div>
     </div>
+    <div class="col-md-4">
+        <div class="box">
+            <div class="box-body">
 
-    <?php ActiveForm::end(); ?>
-
-</div>
+                <?= $form->field($model, 'avatar')->widget(FileInput::class, [
+                    'pluginOptions' => [
+                        'initialPreview' => isset($client) ? $client->getThumbFileUrl('avatar') : false,
+                        'initialPreviewAsData'=>true,
+                        'showUpload' => false,
+                    ],
+                    'options' => ['accept' => 'image/*']
+                ]) ?>
+                <div class="form-group">
+                    <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success btn-flat btn-block']) ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php ActiveForm::end(); ?>
 
 
 <?php
 
 $script = <<<JS
-$('#client-phone').inputmask("(999) 999-99-99");
+$('#clientform-phone').inputmask("+7 (999) 999-99-99");
+$('#clientform-date_of_birth').inputmask({alias:"yyyy-mm-dd", placeholder: "гггг-мм-дд",});
 JS;
 
 $this->registerJs($script);

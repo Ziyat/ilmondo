@@ -6,7 +6,7 @@
 
 ?>
 
-<div class="row  productColFull">
+<div class="row productColFull">
     <div class="col-six">
         <div class="slider productsSliderFor">
             <div class="zoomImg"><img src="/images/products/demo1.png" alt=""></div>

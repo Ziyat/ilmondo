@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff68129f4d98b0044e12905b15b0278c",
+    "content-hash": "054ba8f8f85e7f809f96829643ae7e1d",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -482,6 +482,262 @@
             "time": "2018-02-23T01:58:20+00:00"
         },
         {
+            "name": "kartik-v/bootstrap-fileinput",
+            "version": "v4.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
+                "reference": "e3126b482e72022b819f4aae58096f3f17d55a90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/e3126b482e72022b819f4aae58096f3f17d55a90",
+                "reference": "e3126b482e72022b819f4aae58096f3f17d55a90",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\plugins\\fileinput\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An enhanced HTML 5 file input for Bootstrap 3.x with features for file preview for many file types, multiple selection, ajax uploads, and more.",
+            "homepage": "https://github.com/kartik-v/bootstrap-fileinput",
+            "keywords": [
+                "ajax",
+                "bootstrap",
+                "delete",
+                "file",
+                "image",
+                "input",
+                "jquery",
+                "multiple",
+                "preview",
+                "progress",
+                "upload"
+            ],
+            "time": "2018-08-30T02:05:20+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-krajee-base",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-krajee-base.git",
+                "reference": "b830a4180bc2601df01de1c5c9eb1401f44efd8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/b830a4180bc2601df01de1c5c9eb1401f44efd8c",
+                "reference": "b830a4180bc2601df01de1c5c9eb1401f44efd8c",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2-bootstrap": "@dev"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\base\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "Base library and foundation components for all Yii2 Krajee extensions.",
+            "homepage": "https://github.com/kartik-v/yii2-krajee-base",
+            "keywords": [
+                "base",
+                "extension",
+                "foundation",
+                "krajee",
+                "widget",
+                "yii2"
+            ],
+            "time": "2018-09-20T14:19:08+00:00"
+        },
+        {
+            "name": "kartik-v/yii2-widget-fileinput",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kartik-v/yii2-widget-fileinput.git",
+                "reference": "7f76d784cc48733746ff90b53b8474dcf48ea6c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-fileinput/zipball/7f76d784cc48733746ff90b53b8474dcf48ea6c4",
+                "reference": "7f76d784cc48733746ff90b53b8474dcf48ea6c4",
+                "shasum": ""
+            },
+            "require": {
+                "kartik-v/bootstrap-fileinput": "~4.4",
+                "kartik-v/yii2-krajee-base": ">=1.9"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kartik\\file\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kartik Visweswaran",
+                    "email": "kartikv2@gmail.com",
+                    "homepage": "http://www.krajee.com/"
+                }
+            ],
+            "description": "An enhanced FileInput widget for Bootstrap 3.x & 4.x with file preview, multiple selection, and more features (sub repo split from yii2-widgets)",
+            "homepage": "https://github.com/kartik-v/yii2-widget-fileinput",
+            "keywords": [
+                "extension",
+                "file",
+                "form",
+                "input",
+                "jquery",
+                "plugin",
+                "upload",
+                "widget",
+                "yii2"
+            ],
+            "time": "2018-09-19T13:09:42+00:00"
+        },
+        {
+            "name": "la-haute-societe/yii2-save-relations-behavior",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/la-haute-societe/yii2-save-relations-behavior.git",
+                "reference": "1784027e913177bf508c9a7e02357837869ec16b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/la-haute-societe/yii2-save-relations-behavior/zipball/1784027e913177bf508c9a7e02357837869ec16b",
+                "reference": "1784027e913177bf508c9a7e02357837869ec16b",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": ">=2.0.14"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.36"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "lhs\\Yii2SaveRelationsBehavior\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alban Jubert",
+                    "email": "alban@lahautesociete.com"
+                }
+            ],
+            "description": "Validate and save automatically related Active Record models.",
+            "keywords": [
+                "Behavior",
+                "active-query",
+                "active-record",
+                "database",
+                "extension",
+                "has-many",
+                "has-one",
+                "relations",
+                "yii2"
+            ],
+            "time": "2018-09-11T09:20:07+00:00"
+        },
+        {
+            "name": "masterexploder/phpthumb",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/masterexploder/PHPThumb.git",
+                "reference": "01f6aa65aa3d136e175f67da2b4ea3e316770d02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/masterexploder/PHPThumb/zipball/01f6aa65aa3d136e175f67da2b4ea3e316770d02",
+                "reference": "01f6aa65aa3d136e175f67da2b4ea3e316770d02",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPThumb": "src",
+                    "PHPThumb\\Tests": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jarrod Nettles",
+                    "email": "jarrod.nettles@icloud.com"
+                },
+                {
+                    "name": "Ian Selby",
+                    "email": "ian@gxdlabs.com"
+                }
+            ],
+            "description": "A library for manipulating images in PHP.",
+            "homepage": "https://github.com/masterexploder/PHPThumb",
+            "keywords": [
+                "image",
+                "resize",
+                "rotate"
+            ],
+            "time": "2015-09-08T22:55:44+00:00"
+        },
+        {
             "name": "rmrevin/yii2-fontawesome",
             "version": "3.x-dev",
             "source": {
@@ -592,17 +848,66 @@
             "time": "2018-07-31T09:26:32+00:00"
         },
         {
+            "name": "yii-dream-team/yii2-upload-behavior",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yii-dream-team/yii2-upload-behavior.git",
+                "reference": "cdb45e68014476765188c387fafcb7fd30d2ad0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yii-dream-team/yii2-upload-behavior/zipball/cdb45e68014476765188c387fafcb7fd30d2ad0a",
+                "reference": "cdb45e68014476765188c387fafcb7fd30d2ad0a",
+                "shasum": ""
+            },
+            "require": {
+                "masterexploder/phpthumb": "*",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yiidreamteam\\upload\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey Samoylov",
+                    "email": "alexey.samoylov@gmail.com",
+                    "homepage": "http://yiidreamteam.com/team/alexey",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yii2 file/image upload behavior for ActiveRecord",
+            "homepage": "http://yiidreamteam.com/yii2/upload-behavior",
+            "keywords": [
+                "Behavior",
+                "file",
+                "image",
+                "resize",
+                "thumb",
+                "upload"
+            ],
+            "time": "2017-10-26T15:44:40+00:00"
+        },
+        {
             "name": "yiisoft/yii2",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "193ea5955cdf0f7bea41aac0ee7c5b52684f6bbe"
+                "reference": "c2807a4d714e23b52f2c800df940c7de49c1ec04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/193ea5955cdf0f7bea41aac0ee7c5b52684f6bbe",
-                "reference": "193ea5955cdf0f7bea41aac0ee7c5b52684f6bbe",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/c2807a4d714e23b52f2c800df940c7de49c1ec04",
+                "reference": "c2807a4d714e23b52f2c800df940c7de49c1ec04",
                 "shasum": ""
             },
             "require": {
@@ -689,7 +994,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2018-09-13T09:18:18+00:00"
+            "time": "2018-09-16T23:26:42+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1234,12 +1539,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "bbb5fdeae10cfbbee3cb2debdf449ab426a1f3cc"
+                "reference": "24525d241461eb4c2cdf1937ed5c9dad2e714bd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/bbb5fdeae10cfbbee3cb2debdf449ab426a1f3cc",
-                "reference": "bbb5fdeae10cfbbee3cb2debdf449ab426a1f3cc",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/24525d241461eb4c2cdf1937ed5c9dad2e714bd4",
+                "reference": "24525d241461eb4c2cdf1937ed5c9dad2e714bd4",
                 "shasum": ""
             },
             "require": {
@@ -1276,7 +1581,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2018-08-24T07:12:40+00:00"
+            "time": "2018-09-19T20:47:28+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -2005,12 +2310,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "4fd1101e13c452e8948aa059cd4c9b020b253a63"
+                "reference": "df5252497e4b5fd537a2258c70b969caa6e770bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4fd1101e13c452e8948aa059cd4c9b020b253a63",
-                "reference": "4fd1101e13c452e8948aa059cd4c9b020b253a63",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/df5252497e4b5fd537a2258c70b969caa6e770bf",
+                "reference": "df5252497e4b5fd537a2258c70b969caa6e770bf",
                 "shasum": ""
             },
             "require": {
@@ -2081,7 +2386,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-09-10T09:25:52+00:00"
+            "time": "2018-09-21T12:43:09+00:00"
         },
         {
             "name": "psr/http-message",
@@ -2742,12 +3047,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/browser-kit.git",
-                "reference": "5bbc05dbdcff6bd695bfa0072176fd75f3b826c7"
+                "reference": "7ea3e68373c4fb4b6d071ba0a6d15c094dbcd7b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/5bbc05dbdcff6bd695bfa0072176fd75f3b826c7",
-                "reference": "5bbc05dbdcff6bd695bfa0072176fd75f3b826c7",
+                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/7ea3e68373c4fb4b6d071ba0a6d15c094dbcd7b9",
+                "reference": "7ea3e68373c4fb4b6d071ba0a6d15c094dbcd7b9",
                 "shasum": ""
             },
             "require": {
@@ -2791,7 +3096,7 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T09:13:01+00:00"
+            "time": "2018-09-09T18:06:02+00:00"
         },
         {
             "name": "symfony/console",
@@ -2868,23 +3173,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "d4240ac5965db1fb41a6604410804cae05ff8b72"
+                "reference": "070488ad1b6a60cee2a2fce3e855b97f9918306b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/d4240ac5965db1fb41a6604410804cae05ff8b72",
-                "reference": "d4240ac5965db1fb41a6604410804cae05ff8b72",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/070488ad1b6a60cee2a2fce3e855b97f9918306b",
+                "reference": "070488ad1b6a60cee2a2fce3e855b97f9918306b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1.3"
             },
             "require-dev": {
+                "psr/cache": "^1.0",
                 "psr/container": "^1.0"
             },
             "suggest": {
                 "psr/cache": "When using the Cache contracts",
-                "psr/container": "When using the Service contracts"
+                "psr/container": "When using the Service contracts",
+                "symfony/cache-contracts-implementation": "",
+                "symfony/service-contracts-implementation": "",
+                "symfony/translation-contracts-implementation": ""
             },
             "type": "library",
             "extra": {
@@ -2924,7 +3233,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2018-09-04T08:20:02+00:00"
+            "time": "2018-09-20T13:44:19+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -2985,12 +3294,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "d980feed1a209d15aceeaff5759a60356e2dcad8"
+                "reference": "3781d24b6285b475b4476842ed437cb93cd29ee5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/d980feed1a209d15aceeaff5759a60356e2dcad8",
-                "reference": "d980feed1a209d15aceeaff5759a60356e2dcad8",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/3781d24b6285b475b4476842ed437cb93cd29ee5",
+                "reference": "3781d24b6285b475b4476842ed437cb93cd29ee5",
                 "shasum": ""
             },
             "require": {
@@ -3034,7 +3343,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2018-09-02T17:48:09+00:00"
+            "time": "2018-09-21T12:51:02+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -3106,12 +3415,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "faec028be9c4992e92381850ae5751dff5edea78"
+                "reference": "e4f1ce8e2f10b4f8b37d32125e1720bea6851096"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/faec028be9c4992e92381850ae5751dff5edea78",
-                "reference": "faec028be9c4992e92381850ae5751dff5edea78",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/e4f1ce8e2f10b4f8b37d32125e1720bea6851096",
+                "reference": "e4f1ce8e2f10b4f8b37d32125e1720bea6851096",
                 "shasum": ""
             },
             "require": {
@@ -3147,7 +3456,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2018-09-05T17:51:25+00:00"
+            "time": "2018-09-21T12:51:02+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -3213,12 +3522,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8"
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d0cd638f4634c16d8df4508e847f14e9e43168b8",
-                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
                 "shasum": ""
             },
             "require": {
@@ -3264,7 +3573,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2018-09-21T13:07:52+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -3272,12 +3581,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "dce4103732c317c9a141e93501808162cc2cb0d0"
+                "reference": "07a9881ca56421f7c1a9e5cc5c9042c12188f10a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/dce4103732c317c9a141e93501808162cc2cb0d0",
-                "reference": "dce4103732c317c9a141e93501808162cc2cb0d0",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/07a9881ca56421f7c1a9e5cc5c9042c12188f10a",
+                "reference": "07a9881ca56421f7c1a9e5cc5c9042c12188f10a",
                 "shasum": ""
             },
             "require": {
@@ -3323,7 +3632,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-09-10T07:26:34+00:00"
+            "time": "2018-09-21T11:02:43+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -3561,7 +3870,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "kartik-v/yii2-widget-fileinput": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

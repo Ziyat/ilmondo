@@ -7,9 +7,13 @@ $config = [
     'name' => 'IL Mondo Orafo',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'ru-RU',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@uploads' => '@app/web/uploads',
+        '@uploadsUrl' => '/uploads',
+        '@noAvatar' => '/uploads/no-avatar.jpg',
     ],
     'modules' => [
         'admin' => [

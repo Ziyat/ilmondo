@@ -10,10 +10,10 @@ $this->title = 'Добавить клиента';
 $this->params['breadcrumbs'][] = ['label' => 'Клиенты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="client-create">
+<div class="row">
 
     <?= $this->render('_form', [
-        'model' => $model,
+        'model' => $form,
     ]) ?>
 
 </div>

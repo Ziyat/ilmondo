@@ -2,26 +2,44 @@
 
 namespace app\modules\admin\controllers;
 
-use Yii;
+use app\modules\admin\readModels\ClientReadModel;
 use app\modules\admin\entities\Client;
+use app\modules\admin\forms\ClientForm;
 use app\modules\admin\search\ClientSearch;
+use app\modules\admin\services\ClientManageService;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ClientController implements the CRUD actions for Client model.
+ * @property ClientManageService $manageService;
+ * @property ClientReadModel $clients;
  */
 class ClientController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
+    private $manageService;
+    private $clients;
+
+    public function __construct(
+        string $id,
+        $module,
+        ClientManageService $service,
+        ClientReadModel $readModel,
+        array $config = []
+    )
+    {
+        parent::__construct($id, $module, $config);
+        $this->manageService = $service;
+        $this->clients = $readModel;
+    }
+
     public function behaviors()
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -30,8 +48,8 @@ class ClientController extends Controller
     }
 
     /**
-     * Lists all Client models.
-     * @return mixed
+     * @return string
+     * @throws \yii\base\InvalidArgumentException
      */
     public function actionIndex()
     {
@@ -45,83 +63,83 @@ class ClientController extends Controller
     }
 
     /**
-     * Displays a single Client model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     * @throws \yii\base\InvalidArgumentException
      */
     public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->clients->find($id),
         ]);
     }
 
     /**
-     * Creates a new Client model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return string|\yii\web\Response
+     * @throws \yii\base\InvalidArgumentException
      */
     public function actionCreate()
     {
-        $model = new Client();
+        $form = new ClientForm();
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            try {
+                $client = $this->manageService->create($form);
+                Yii::$app->session->setFlash('success', 'Клиент успешно добавлен!');
+                return $this->redirect(['view', 'id' => $client->id]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            } catch (\Exception $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            } catch (\Throwable $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
         }
-
         return $this->render('create', [
-            'model' => $model,
+            'form' => $form,
         ]);
     }
 
     /**
-     * Updates an existing Client model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @param $id
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
+     * @throws \yii\base\InvalidArgumentException
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $client = $this->clients->find($id);
+        $form = new ClientForm($client);
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            try {
+                $client = $this->manageService->edit($client->id, $form);
+                Yii::$app->session->setFlash('success', 'Клиент успешно редактирован!');
+                return $this->redirect(['view', 'id' => $client->id]);
+            } catch (\Exception $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            } catch (\Throwable $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
         }
-
         return $this->render('update', [
-            'model' => $model,
+            'form' => $form,
+            'client' => $client,
         ]);
     }
 
     /**
-     * Deletes an existing Client model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @param $id
+     * @return \yii\web\Response
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Client model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Client the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Client::findOne($id)) !== null) {
-            return $model;
+        try {
+            $this->manageService->remove($id);
+            Yii::$app->session->setFlash('success', 'Клиент успешно удален!');
+        } catch (\Exception $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+        } catch (\Throwable $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
         }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return $this->redirect(['index']);
     }
 }

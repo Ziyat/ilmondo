@@ -33,11 +33,9 @@ class ClientSearch extends Client
     }
 
     /**
-     * Creates data provider instance with search query applied
-     *
-     * @param array $params
-     *
+     * @param $params
      * @return ActiveDataProvider
+     * @throws \yii\base\InvalidArgumentException
      */
     public function search($params)
     {
