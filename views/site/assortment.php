@@ -9,7 +9,7 @@
 $this->title = 'Ассортимент обручальный колец';
 
 ?>
-<section class="s-content s-content--narrow">
+<section class="s-content--narrow">
     <div class="row assortment">
         <h1>Ассортимент обручальных колец</h1>
         <h3>На Ваш выбор:</h3>
