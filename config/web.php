@@ -2,8 +2,6 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
-use Itstructure\AdminModule\components\AdminView;
-use Itstructure\AdminModule\Module;
 $config = [
     'id' => 'IL Mondo Orafo',
     'name' => 'IL Mondo Orafo',
@@ -13,7 +11,31 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'viewPath' => '@app/modules/admin/views',
+
+            'as access' => [
+                'class' => 'yii\filters\AccessControl',
+                'except' => ['auth/login', 'auth/error', 'auth/captcha'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ],
+    ],
     'components' => [
+        'assetManager' => [
+            'bundles' => [
+                'dmstr\web\AdminLteAsset' => [
+                    'skin' => 'skin-blue',
+                ],
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'W-Q18LhMGJ3L7Eq-zFeF6oq6WaPd61Yf',
@@ -23,8 +45,9 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => \app\modules\admin\entities\User::class,
             'enableAutoLogin' => true,
+            'loginUrl' => ['admin/auth/login'],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -74,6 +97,14 @@ if (YII_ENV_DEV) {
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         'allowedIPs' => ['*'],
+        'generators' => [ //here
+            'crud' => [
+                'class' => 'yii\gii\generators\crud\Generator',
+                'templates' => [
+                    'adminlte' => '@vendor/dmstr/yii2-adminlte-asset/gii/templates/crud/simple',
+                ]
+            ]
+        ],
     ];
 }
 
