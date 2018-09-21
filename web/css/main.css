@@ -1190,11 +1190,14 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .slick-list {
     margin: -10px -10px;
 }
+.productColFull{
+    background-color: white;
+}
 .productsSliderFor {
-    max-width: 400px;
+    max-width: 350px;
 }
 .productsSliderNav{
-    max-width: 400px;
+    max-width: 350px;
 }
 .productsSliderNav .slick-slide{
     max-width: 100px;

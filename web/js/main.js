@@ -668,7 +668,8 @@
         centerMode: true,
         focusOnSelect: true,
         arrows: false,
-        mobileFirst: true
+        mobileFirst: true,
+        centerPadding:"0px"
     });
 
 })(jQuery);

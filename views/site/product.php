@@ -12,15 +12,15 @@
             <div class="zoomImg"><img src="/images/products/demo1.png" alt=""></div>
             <div class="zoomImg"><img src="/images/products/demo2.png" alt=""></div>
             <div class="zoomImg"><img src="/images/products/demo3.png" alt=""></div>
-            <div class="zoomImg"><img src="/images/products/demo2.png" alt=""></div>
-            <div class="zoomImg"><img src="/images/products/demo2.png" alt=""></div>
+            <div class="zoomImg"><img src="/images/products/demo3.png" alt=""></div>
+            <div class="zoomImg"><img src="/images/products/demo3.png" alt=""></div>
         </div>
         <div class="slider productsSliderNav ">
             <div><img src="/images/products/demo1.png" alt=""></div>
             <div><img src="/images/products/demo2.png" alt=""></div>
             <div><img src="/images/products/demo3.png" alt=""></div>
-            <div><img src="/images/products/demo2.png" alt=""></div>
-            <div><img src="/images/products/demo2.png" alt=""></div>
+            <div><img src="/images/products/demo3.png" alt=""></div>
+            <div><img src="/images/products/demo3.png" alt=""></div>
         </div>
     </div>
 
