@@ -25,7 +25,7 @@
     </div>
 
     <div class="pokupka col-six">
-        <h2>Браслет из коллекции Jamiya</h2>
+        <h1>Браслет из коллекции Jamiya</h1>
         <div class="par">
             <p>В наличии</p>
             <p>Артикул: 0202</p>
