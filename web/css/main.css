@@ -156,8 +156,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 }
 
 h5, .h5, h6, .h6 {
-    margin-top: 4.2rem;
-    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -173,7 +174,7 @@ h1, .h1 {
     line-height: 1.25;
     letter-spacing: -.1rem;
     margin-top: 0;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1271,6 +1272,61 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     width: 50px;
     border: solid rgba(0, 0, 0, 0.4);
 }
+/*--------------------------------------
+                    service
+----------------------------------------*/
+.service h2{
+    text-align: center;
+}
+.service p{
+    margin-bottom: 0;
+}
+.service hr{
+    width: 50px;
+    border: solid rgba(0, 0, 0, 0.4);
+}
+.service a{
+    padding-left: 10px!important;
+}
+.service .inline{
+    display: inline-block;
+    margin-top: 0;
+}
+/*--------------------------------------
+                    warranty
+----------------------------------------*/
+.warranty h3, h2{
+    text-align: center;
+}
+.warranty p{
+    margin-bottom: 0;
+}
+.warranty hr{
+    width: 50px;
+    border: solid rgba(0, 0, 0, 0.4);
+}
+
+/*--------------------------------------
+                    partners
+----------------------------------------*/
+.partners  h2{
+    text-align: center;
+}
+.partners p{
+    margin-bottom: 0;
+}
+.partners hr{
+    width: 50px;
+    border: solid rgba(0, 0, 0, 0.4);
+}
+.partners a{
+    padding-left: 10px!important;
+}
+.partners .inline{
+    display: inline-block;
+    margin-top: 0;
+}
+
 /* -------------------------------------------------------------------
  * ## pagination
  * ------------------------------------------------------------------- */

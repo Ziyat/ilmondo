@@ -84,4 +84,9 @@ class SiteController extends Controller
     {
         return $this->render('warranty');
     }
+    public function actionPartners()
+    {
+        return $this->render('partners');
+    }
+
 }
