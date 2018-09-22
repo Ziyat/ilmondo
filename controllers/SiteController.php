@@ -79,4 +79,9 @@ class SiteController extends Controller
     {
         return $this->render('service');
     }
+
+    public function actionWarranty()
+    {
+        return $this->render('warranty');
+    }
 }
