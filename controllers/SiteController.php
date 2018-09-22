@@ -88,5 +88,9 @@ class SiteController extends Controller
     {
         return $this->render('partners');
     }
+    public function actionPhilosophy()
+    {
+        return $this->render('philosophy');
+    }
 
 }

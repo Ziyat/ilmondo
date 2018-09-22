@@ -671,5 +671,19 @@
         mobileFirst: true,
         centerPadding:"0px"
     });
+        ymaps.ready(init);
 
+    function init(){
+        var myMap = new ymaps.Map("map", {
+            center: [55.75779906898193,37.623015999999964],
+            zoom: 16
+        });
+
+        var myPlacemark = new ymaps.Placemark([55.75779906898193,37.623015999999964], {
+            hintContent: 'Содержимое всплывающей подсказки',
+            balloonContent: 'Содержимое балуна'
+        });
+
+        myMap.geoObjects.add(myPlacemark);
+    }
 })(jQuery);

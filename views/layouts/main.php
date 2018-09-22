@@ -92,7 +92,7 @@ HeadAppAsset::register($this);
                         <a href="#0" title="">Бренд</a>
                         <ul class="sub-menu">
                             <li><a href="<?= Url::to(['site/about']) ?>">О Компании</a></li>
-                            <li><a href="<?= Url::to(['site//brand']) ?>">Философия Бренда</a></li>
+                            <li><a href="<?= Url::to(['site/philosophy']) ?>">Философия Бренда</a></li>
                             <li><a href="<?= Url::to(['site/service']) ?>">Услуги</a></li>
                             <li><a href="<?= Url::to(['site/warranty']) ?>">Гарантии</a></li>
                             <li><a href="<?= Url::to(['site/partners']) ?>">Партнеры</a></li>
@@ -118,7 +118,7 @@ HeadAppAsset::register($this);
                             <li><a href="single-standard.html">Standard Post</a></li>
                         </ul>
                     </li>
-                    <li><a href="style-guide.html" title="">Контакты</a></li>
+                    <li><a href="<?= Url::to(['site/contact']) ?>" title="">Контакты</a></li>
                 </ul>
 
                 <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>

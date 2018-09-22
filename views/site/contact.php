@@ -11,58 +11,62 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
+<section class="s-content--narrow">
 
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+    <div class="row contact">
 
-        <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
-        </div>
+        <div class="s-content__header col-full">
+            <h1 class="s-content__header-title">
+                Контакты
+            </h1>
+        </div> <!-- end s-content__header -->
 
-        <p>
-            Note that if you turn on the Yii debugger, you should be able
-            to view the mail message on the mail panel of the debugger.
-            <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Because the application is in development mode, the email is not sent but saved as
-                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                application component to be false to enable email sending.
-            <?php endif; ?>
-        </p>
+        <div class="s-content__media col-full">
+            <div id="map" style="width: 100%; height: 400px"></div>
+        </div> <!-- end s-content__media -->
 
-    <?php else: ?>
+        <div>
+            <h4>Москва,ТЦ "Славянский" Никольская улица.<br />
+                Дом 17 строение 1 , офис 109 ,этаж 1</h4>
+            <p>м. Лубянка<br /> м. Площадь Революции<br />м. Театральная<br />м. Охотный Ряд</p>
+            <hr>
+            <p>Все интересующие Вас вопросы по заказу обручальных колец Вы можете задать по телефонам:</p>
+            <a href="#">Тел. 8 (495) 799 07 07<br /></a>
+            <a href="#">Тел. 8 (903) 799 07 07<br /></a>
+            <a href="#">Тел. 8 (499) 130 54 28<br /></a>
+            <a href="#">Тел. 8 (903) 130 54 28<br /></a>
+            <a href="#">Тел. 8 (499) 344 04 00<br /></a>
+            <h5  class="inline">Email:</h5>
+            <a href="#">didiamonds@mail.ru</a>
+            <h4>Режим работы:</h4>
+            <p>Ежедневно с 10:00 до 20:00 без обеда.</p>
+            <form name="cForm" id="cForm" method="post" action="">
+                <fieldset>
 
-        <p>
-            If you have business inquiries or other questions, please fill out the following form to contact us.
-            Thank you.
-        </p>
-
-        <div class="row">
-            <div class="col-lg-5">
-
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-                    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-
-                    <?= $form->field($model, 'email') ?>
-
-                    <?= $form->field($model, 'subject') ?>
-
-                    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
-
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ]) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                    <div class="form-field">
+                        <input name="cName" type="text" id="cName" class="full-width" placeholder="Your Name" value="">
                     </div>
 
-                <?php ActiveForm::end(); ?>
+                    <div class="form-field">
+                        <input name="cEmail" type="text" id="cEmail" class="full-width" placeholder="Your Email" value="">
+                    </div>
 
-            </div>
-        </div>
+                    <div class="form-field">
+                        <input name="cWebsite" type="text" id="cWebsite" class="full-width" placeholder="Website"  value="">
+                    </div>
 
-    <?php endif; ?>
-</div>
+                    <div class="message form-field">
+                        <textarea name="cMessage" id="cMessage" class="full-width" placeholder="Your Message" ></textarea>
+                    </div>
+
+                    <button type="submit" class="submit btn btn--primary full-width">Submit</button>
+
+                </fieldset>
+            </form> <!-- end form -->
+
+
+        </div> <!-- end s-content__main -->
+
+    </div> <!-- end row -->
+
+</section> <!-- s-content -->
