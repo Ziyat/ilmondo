@@ -132,6 +132,9 @@ a:hover, a:active {
  * # typography & general theme styles
  * 
  * ------------------------------------------------------------------- */
+p{
+    margin-bottom: 3rem!important;
+}
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "EB Garamond", serif;
     color: #000000;
@@ -141,8 +144,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
-    margin-top: 6rem;
-    margin-bottom: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 3rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -169,6 +172,8 @@ h1, .h1 {
     font-size: 3.6rem;
     line-height: 1.25;
     letter-spacing: -.1rem;
+    margin-top: 0;
+    margin-bottom: 4rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1240,7 +1245,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 /*--------------------------------------
                     about
 ----------------------------------------*/
-.about h3{
+.about h3, h2{
     text-align: center;
 }
 .about p{
@@ -1250,7 +1255,22 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     width: 50px;
     border: solid rgba(0, 0, 0, 0.4);
 }
-
+/*--------------------------------------
+                    assortment
+----------------------------------------*/
+.assortment h2,h1{
+    text-align: center;
+}
+.assortment h3{
+    text-align: left;
+}
+.assortment p{
+    margin-bottom: 0;
+}
+.assortment hr{
+    width: 50px;
+    border: solid rgba(0, 0, 0, 0.4);
+}
 /* -------------------------------------------------------------------
  * ## pagination
  * ------------------------------------------------------------------- */
@@ -2982,7 +3002,7 @@ html.no-csstransitions .featured {
  * ------------------------------------------------------------------- */
 .s-content {
     background-color: #f2f2f2;
-    padding-top: 3.4rem;
+    padding-top: 3rem;
     padding-bottom: 7.2rem;
 }
 
@@ -3836,7 +3856,6 @@ footer h4::after {
     position: relative;
     padding-right: 55px;
     margin-right: 1.5rem;
-    margin-top: 1.2rem;
 }
 
 .s-content__tags span::after {
