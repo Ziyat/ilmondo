@@ -2,7 +2,9 @@
 
 namespace app\modules\admin\entities;
 
+use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use Yii;
+use yii\db\ActiveQuery;
 use yiidreamteam\upload\ImageUploadBehavior;
 
 /**
@@ -18,13 +20,21 @@ use yiidreamteam\upload\ImageUploadBehavior;
  * @property string $email
  * @property string $params
  * @property string $avatar
+ * @property integer $status
  *
  * @mixin ImageUploadBehavior
+ *
+ * @property DealerAssignments $clientAssignments[]
+ * @property DealerAssignments $dealerAssignment
+ * @property $this $dealer
+ * @property $this $clients[]
  */
 class Client extends \yii\db\ActiveRecord
 {
+    const STATUS_DEALER = 10;
+    const STATUS_CLIENT = 20;
 
-    public static function create($name, $last_name, $address_line_1, $address_line_2, $date_of_birth, $phone, $email, $params, $avatar): self
+    public static function create($name, $last_name, $address_line_1, $address_line_2, $date_of_birth, $phone, $email, $params, $avatar, $status): self
     {
         $client = new static();
         $client->name = $name;
@@ -36,10 +46,11 @@ class Client extends \yii\db\ActiveRecord
         $client->email = $email;
         $client->params = $params;
         $client->avatar = $avatar;
+        $client->avatar = $status;
         return $client;
     }
 
-    public function edit($name, $last_name, $address_line_1, $address_line_2, $date_of_birth, $phone, $email, $params, $avatar): void
+    public function edit($name, $last_name, $address_line_1, $address_line_2, $date_of_birth, $phone, $email, $params, $avatar, $status): void
     {
         $this->name = $name;
         $this->last_name = $last_name;
@@ -50,34 +61,65 @@ class Client extends \yii\db\ActiveRecord
         $this->email = $email;
         $this->params = $params;
         $this->avatar = $avatar;
+        $this->status = $status;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
+    public function isDealer()
     {
-        return '{{%clients}}';
+        return $this->status == self::STATUS_DEALER;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
+    public function isClient()
     {
-        return [
-            'id' => 'ID',
-            'name' => 'Имя',
-            'last_name' => 'Фамилия',
-            'address_line_1' => 'Адрес 1',
-            'address_line_2' => 'Адрес 2',
-            'date_of_birth' => 'Дата родждения',
-            'phone' => 'Тел.',
-            'email' => 'Эл. Почта',
-            'params' => 'Доп. информация',
-            'avatar' => 'Фото',
-        ];
+        return $this->status == self::STATUS_CLIENT;
     }
+
+
+    public function assignClient($id)
+    {
+        $clients = $this->clientAssignments;
+
+        foreach ($clients as $client) {
+            if ($client->isClientId($id)) {
+                return;
+            }
+        }
+
+        $clients[] = DealerAssignments::create(null, $id);
+        $this->clientAssignments = $clients;
+    }
+
+    public function assignDealer($id)
+    {
+        $dealer = $this->dealerAssignment;
+        if ($dealer) {
+            $dealer->edit($id, $this->id);
+            return;
+        }
+        $dealer = DealerAssignments::create($id);
+        $this->dealerAssignment = $dealer;
+    }
+
+    public function getClientAssignments(): ActiveQuery
+    {
+        return $this->hasMany(DealerAssignments::class, ['dealer_id' => 'id']);
+    }
+
+    public function getDealerAssignment(): ActiveQuery
+    {
+        return $this->hasOne(DealerAssignments::class, ['client_id' => 'id']);
+    }
+
+    public function getClients(): ActiveQuery
+    {
+        return $this->hasMany(self::class, ['id' => 'client_id'])->via('clientAssignments');
+    }
+
+    public function getDealer()
+    {
+        return $this->hasOne(self::class, ['id' => 'dealer_id'])->via('dealerAssignment');
+    }
+
 
     public function behaviors()
     {
@@ -93,6 +135,10 @@ class Client extends \yii\db\ActiveRecord
                 'fileUrl' => '@uploadsUrl/store/clients/[[id]]/[[pk]].[[extension]]',
                 'thumbPath' => '@uploads/cache/clients/[[id]]/[[profile]]_[[pk]].[[extension]]',
                 'thumbUrl' => '@uploadsUrl/cache/clients/[[id]]/[[profile]]_[[pk]].[[extension]]',
+            ],
+            [
+                'class' => SaveRelationsBehavior::class,
+                'relations' => ['clientAssignments']
             ]
         ];
     }
@@ -101,15 +147,13 @@ class Client extends \yii\db\ActiveRecord
      * @throws \yii\base\InvalidArgumentException
      * @throws \yii\base\InvalidConfigException
      */
-    public
-    function afterFind()
+    public function afterFind()
     {
         parent::afterFind();
         $this->date_of_birth = Yii::$app->formatter->asDate($this->date_of_birth, 'php:Y-m-d');
     }
 
-    public
-    function beforeSave($insert)
+    public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
             $this->date_of_birth = strtotime($this->date_of_birth);
@@ -117,4 +161,28 @@ class Client extends \yii\db\ActiveRecord
         }
         return false;
     }
+
+    public static function tableName()
+    {
+        return '{{%clients}}';
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'name' => 'Имя',
+            'last_name' => 'Фамилия',
+            'address_line_1' => 'Адрес 1',
+            'address_line_2' => 'Адрес 2',
+            'date_of_birth' => 'Дата рождения',
+            'phone' => 'Тел.',
+            'email' => 'Эл. Почта',
+            'params' => 'Доп. информация',
+            'avatar' => 'Фото',
+            'status' => 'Тип клиента',
+        ];
+    }
+
+
 }

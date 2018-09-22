@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\admin\entities\Client;
 use kartik\file\FileInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -7,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\forms\ClientForm */
 /* @var $form yii\widgets\ActiveForm */
-/* @var $client app\modules\admin\entities\Client */
+/* @var $client Client */
 
 ?>
 <?php $form = ActiveForm::begin(); ?>
@@ -37,7 +38,12 @@ use yii\widgets\ActiveForm;
     <div class="col-md-4">
         <div class="box">
             <div class="box-body">
-
+                <?= $form->field($model, 'status')->dropDownList(
+                    [
+                        Client::STATUS_CLIENT => 'Клиент',
+                        Client::STATUS_DEALER => 'Диллер'
+                    ]
+                ) ?>
                 <?= $form->field($model, 'avatar')->widget(FileInput::class, [
                     'pluginOptions' => [
                         'initialPreview' => isset($client) ? $client->getThumbFileUrl('avatar') : false,

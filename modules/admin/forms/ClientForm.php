@@ -23,6 +23,7 @@ use yii\web\UploadedFile;
  * @property string $email
  * @property string $params
  * @property string $avatar
+ * @property integer $status
  */
 class ClientForm extends CompositeForm
 {
@@ -36,8 +37,10 @@ class ClientForm extends CompositeForm
     public $email;
     public $params;
     public $avatar;
+    public $status;
 
     public $clients;
+
     public $_client;
 
     public function __construct(Client $client = null, array $config = [])
@@ -52,6 +55,7 @@ class ClientForm extends CompositeForm
             $this->email = $client->email;
             $this->params = $client->params;
             $this->avatar = $client->avatar;
+            $this->status = $client->status;
             $this->_client = $client;
         }
         parent::__construct($config);
@@ -62,6 +66,7 @@ class ClientForm extends CompositeForm
         return [
             [['name'], 'required'],
             [['date_of_birth'], 'date', 'format' => 'php:Y-m-d'],
+            [['status'], 'integer'],
             [['params'], 'string'],
             ['email', 'email'],
             [['name', 'last_name', 'address_line_1', 'address_line_2', 'phone'], 'string', 'max' => 255],
@@ -91,6 +96,7 @@ class ClientForm extends CompositeForm
             'email' => 'Эл. Почта',
             'params' => 'Доп. информация',
             'avatar' => 'Фото',
+            'status' => 'Тип клиента',
         ];
     }
 

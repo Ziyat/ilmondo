@@ -74,4 +74,9 @@ class SiteController extends Controller
     {
         return $this->render('assortment');
     }
+
+    public function actionService()
+    {
+        return $this->render('service');
+    }
 }

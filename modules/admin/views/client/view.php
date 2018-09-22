@@ -1,11 +1,16 @@
 <?php
 
+use app\modules\admin\entities\Client;
+use app\modules\admin\helpers\ClientHelpers;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $client app\modules\admin\entities\Client */
+/* @var $model \app\modules\admin\forms\DealerAssignmentForm */
 
-$this->title = 'Редактирование';
+$this->title = 'Информация';
 $this->params['breadcrumbs'][] = ['label' => 'Клиенты', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -43,6 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="media-body">
                             <h4><?= $client->name . ' ' . $client->last_name ?></h4>
                             <p><?= $client->params ?></p>
+                            <p><?= ClientHelpers::getStatusLabel($client->status) ?></p>
                         </div>
                     </div>
 
@@ -73,14 +79,50 @@ $this->params['breadcrumbs'][] = $this->title;
                             <td><?= $client->params ?></td>
                         </tr>
                         <tr>
-                            <th>Дата рождения</th>
+                            <th><?= $client->getAttributeLabel('date_of_birth') ?></th>
                             <td><?= $client->date_of_birth ?></td>
                         </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="box-footer">
+                    <?php $form = ActiveForm::begin(); ?>
+
+                    <?php if ($client->status == $client::STATUS_DEALER): ?>
+                        <?= $form->field($model, 'clients')->dropDownList(
+                            ArrayHelper::map(
+                                Client::find()
+                                    ->where(['status' => Client::STATUS_CLIENT])
+                                    ->asArray()
+                                    ->all(),
+                                'id',
+                                'name'),
+                            [
+                                'multiple' => true,
+                                'options' => ArrayHelper::map($model->clients, 'id', function ($model) {
+                                    return ['selected' => true];
+                                })
+                            ]
+                        )->label('Клиенты') ?>
+                    <?php elseif ($client->status == $client::STATUS_CLIENT): ?>
+                        <?= $form->field($model, 'dealer')->dropDownList(
+                            ArrayHelper::map(
+                                Client::find()
+                                    ->where(['status' => Client::STATUS_DEALER])
+                                    ->asArray()
+                                    ->all(),
+                                'id',
+                                'name')
+                        )->label('Назначить диллера') ?>
+                    <?php endif; ?>
+
+                    <div class="form-group">
+                        <?= Html::submitButton(' Закрепить', ['class' => 'btn btn-info btn-flat btn-block']) ?>
+                    </div>
+
+                    <?php ActiveForm::end(); ?>
 
                 </div>
-                <div class="box-footer"></div>
             </div>
         </div>
     </div>

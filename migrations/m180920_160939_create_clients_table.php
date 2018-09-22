@@ -24,6 +24,7 @@ class m180920_160939_create_clients_table extends Migration
             'email' => $this->string(),
             'params' => $this->text(),
             'avatar' => $this->string(),
+            'status' => $this->integer()->defaultValue(20),
         ],$tableOptions);
     }
 

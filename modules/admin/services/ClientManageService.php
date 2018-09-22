@@ -9,6 +9,7 @@ namespace app\modules\admin\services;
 
 use app\modules\admin\entities\Client;
 use app\modules\admin\forms\ClientForm;
+use app\modules\admin\forms\DealerAssignmentForm;
 use app\modules\admin\repositories\ClientRepository;
 
 /**
@@ -43,7 +44,8 @@ class ClientManageService
             $form->phone,
             $form->email,
             $form->params,
-            $form->avatar
+            $form->avatar,
+            $form->status
         );
 
         $this->clients->save($client);
@@ -70,7 +72,8 @@ class ClientManageService
             $form->phone,
             $form->email,
             $form->params,
-            $form->avatar
+            $form->avatar,
+            $form->status
         );
 
         $this->clients->save($client);
@@ -91,8 +94,28 @@ class ClientManageService
         $this->clients->remove($client);
     }
 
-    public function assignClient()
+    /**
+     * @param $id
+     * @param DealerAssignmentForm $form
+     * @throws \DomainException
+     * @throws \yii\web\NotFoundHttpException
+     */
+    public function assign($id, DealerAssignmentForm $form)
     {
+        $client = $this->clients->find($id);
+        if ($client->isDealer()) {
+
+            $client->clientAssignments = [];
+            $this->clients->save($client);
+
+            foreach ($form->clients as $clientId) {
+                $client->assignClient($clientId);
+            }
+        }
+        if ($client->isClient()) {
+            $client->assignDealer($form->dealer);
+        }
+        $this->clients->save($client);
 
     }
 }

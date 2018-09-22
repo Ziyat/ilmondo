@@ -78,7 +78,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
-                '<_a:about|contact|brand|product|assortment>' => 'site/<_a>',
+                '<_a:[a-zA-Z0-9]+>' => 'site/<_a>',
             ],
         ],
 

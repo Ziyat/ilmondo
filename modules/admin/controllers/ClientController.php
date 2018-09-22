@@ -2,9 +2,9 @@
 
 namespace app\modules\admin\controllers;
 
-use app\modules\admin\readModels\ClientReadModel;
-use app\modules\admin\entities\Client;
 use app\modules\admin\forms\ClientForm;
+use app\modules\admin\forms\DealerAssignmentForm;
+use app\modules\admin\readModels\ClientReadModel;
 use app\modules\admin\search\ClientSearch;
 use app\modules\admin\services\ClientManageService;
 use Yii;
@@ -70,8 +70,20 @@ class ClientController extends Controller
      */
     public function actionView($id)
     {
+        $client = $this->clients->find($id);
+        $form = new DealerAssignmentForm($client);
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            try {
+                $this->manageService->assign($client->id, $form);
+                Yii::$app->session->setFlash('success', 'Операция успешно выполнена!');
+                $this->refresh();
+            } catch (\Exception $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
+        }
         return $this->render('view', [
-            'client' => $this->clients->find($id),
+            'client' => $client,
+            'model' => $form,
         ]);
     }
 

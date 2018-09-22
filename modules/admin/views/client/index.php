@@ -4,6 +4,7 @@ use app\modules\admin\entities\Client;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use app\modules\admin\helpers\ClientHelpers;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\admin\search\ClientSearch */
@@ -58,6 +59,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'phone',
                 'email:email',
                 'address_line_1',
+                [
+                    'attribute' => 'status',
+                    'value' => function (Client $model) {
+                        return ClientHelpers::getStatusLabel($model->status);
+                    },
+                    'format' => 'raw'
+                ]
             ],
         ]);
     } catch (\Exception $e) {

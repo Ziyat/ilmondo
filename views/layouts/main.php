@@ -91,11 +91,11 @@ HeadAppAsset::register($this);
                     <li class="has-children">
                         <a href="#0" title="">Бренд</a>
                         <ul class="sub-menu">
-                            <li><a href="<?= Url::to(['about']) ?>">О Компании</a></li>
-                            <li><a href="<?= Url::to(['brand']) ?>">Философия Бренда</a></li>
-                            <li><a href="<?= Url::to(['service']) ?>">Услуги</a></li>
-                            <li><a href="<?= Url::to(['warranties']) ?>">Гарантии</a></li>
-                            <li><a href="<?= Url::to(['partners']) ?>">Партнеры</a></li>
+                            <li><a href="<?= Url::to(['site/about']) ?>">О Компании</a></li>
+                            <li><a href="<?= Url::to(['site//brand']) ?>">Философия Бренда</a></li>
+                            <li><a href="<?= Url::to(['site/service']) ?>">Услуги</a></li>
+                            <li><a href="<?= Url::to(['site/warranty']) ?>">Гарантии</a></li>
+                            <li><a href="<?= Url::to(['site/partners']) ?>">Партнеры</a></li>
                         </ul>
                     </li>
                     <li class="has-children">
@@ -261,70 +261,70 @@ HeadAppAsset::register($this);
 
 <footer class="s-footer">
     <div class="socialfooter row">
-        <span class="fa-stack fa-lg">
-            <i class="colcircle1 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-twitter fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle2 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-facebook fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle3 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-instagram fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle4 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-google-plus fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle5 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-pinterest fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle6 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-youtube fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle7 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-youtube-play fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle8 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-vk fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle9 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-skype fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle10 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-linkedin fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle11 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-dropbox fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle12 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-vk fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle13 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-skype fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle14 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-linkedin fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle15 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-dropbox fa-stack-1x fa-inverse"></i>
-        </span>
-        <span class="fa-stack fa-lg">
-            <i class="colcircle16 fa fa-circle fa-stack-2x"></i>
-            <i class="colicon fa fa-dropbox fa-stack-1x fa-inverse"></i>
-        </span>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle1 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-twitter fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle2 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-facebook fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle3 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-instagram fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle4 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-google-plus fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle5 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-pinterest fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle6 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-youtube fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle7 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-youtube-play fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle8 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-vk fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle9 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-skype fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle10 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-linkedin fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle11 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-dropbox fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle12 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-vk fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle13 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-skype fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle14 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-linkedin fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle15 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-dropbox fa-stack-1x fa-inverse"></i>
+            </span></a>
+        <a href="#"><span class="fa-stack fa-lg">
+                <i class="colcircle16 fa fa-circle fa-stack-2x"></i>
+                <i class="colicon fa fa-dropbox fa-stack-1x fa-inverse"></i>
+            </span></a>
     </div>
     <div class="s-footer__main">
         <div class="row">
