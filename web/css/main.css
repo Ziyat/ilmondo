@@ -1246,7 +1246,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 /*--------------------------------------
                     about
 ----------------------------------------*/
-.about h3, h2{
+.about h2{
     text-align: center;
 }
 .about p{
@@ -1259,7 +1259,10 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 /*--------------------------------------
                     assortment
 ----------------------------------------*/
-.assortment h2,h1{
+.assortment h2 {
+    text-align: center;
+}
+.assortment h1 {
     text-align: center;
 }
 .assortment h3{
@@ -1275,6 +1278,9 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 /*--------------------------------------
                     service
 ----------------------------------------*/
+.service h1 {
+    text-align: center;
+}
 .service h2{
     text-align: center;
 }
@@ -1295,7 +1301,13 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 /*--------------------------------------
                     warranty
 ----------------------------------------*/
-.warranty h3, h2{
+.warranty h1 {
+    text-align: center;
+}
+.warranty h3 {
+    text-align: center;
+}
+.warranty h2 {
     text-align: center;
 }
 .warranty p{
@@ -1309,6 +1321,9 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 /*--------------------------------------
                     partners
 ----------------------------------------*/
+.partners h1 {
+    text-align: center;
+}
 .partners  h2{
     text-align: center;
 }
