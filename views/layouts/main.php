@@ -426,6 +426,7 @@ HeadAppAsset::register($this);
         </div>
     </div>
 </div>
+
 <?php $this->endBody() ?>
 </body>
 </html>

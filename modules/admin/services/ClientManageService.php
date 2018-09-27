@@ -104,17 +104,21 @@ class ClientManageService
     {
         $client = $this->clients->find($id);
         if ($client->isDealer()) {
-
             $client->clientAssignments = [];
             $this->clients->save($client);
-
             foreach ($form->clients as $clientId) {
+                if (empty($clientId)) continue;
                 $client->assignClient($clientId);
             }
         }
+
         if ($client->isClient()) {
+            $client->dealerAssignments = [];
+            $this->clients->save($client);
+            if (empty($form->dealer)) return;
             $client->assignDealer($form->dealer);
         }
+
         $this->clients->save($client);
 
     }

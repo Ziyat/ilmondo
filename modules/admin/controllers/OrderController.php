@@ -2,38 +2,37 @@
 
 namespace app\modules\admin\controllers;
 
-use app\modules\admin\forms\CategoryForm;
-use app\modules\admin\readModels\CategoryReadModel;
-use app\modules\admin\services\CategoryManageService;
+use app\modules\admin\forms\OrderForm;
+use app\modules\admin\readModels\OrderReadModel;
+use app\modules\admin\search\OrderSearch;
+use app\modules\admin\services\OrderManageService;
 use Yii;
-use app\modules\admin\entities\Category;
-use app\modules\admin\search\CategorySearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
- * CategoryController implements the CRUD actions for Category model.
- * @property CategoryManageService $manageService
- * @property CategoryReadModel $categories
+ * OrderController implements the CRUD actions for Order model.
+ * @property OrderManageService $manageService;
+ * @property OrderReadModel $orders;
  */
-class CategoryController extends Controller
+class OrderController extends Controller
 {
     public $manageService;
-    public $categories;
+    public $orders;
 
     public function __construct(
         string $id,
         $module,
-        CategoryManageService $service,
-        CategoryReadModel $readModel,
-        array $config = []
-    )
+        OrderManageService $service,
+        OrderReadModel $readModel,
+        array $config = [])
     {
         $this->manageService = $service;
-        $this->categories = $readModel;
+        $this->orders = $readModel;
         parent::__construct($id, $module, $config);
     }
+
 
     public function behaviors()
     {
@@ -53,7 +52,7 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CategorySearch();
+        $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -71,7 +70,7 @@ class CategoryController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'order' => $this->orders->find($id),
         ]);
     }
 
@@ -81,19 +80,15 @@ class CategoryController extends Controller
      */
     public function actionCreate()
     {
-        $form = new CategoryForm();
-
+        $form = new OrderForm();
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
-            try{
-                $category = $this->manageService->create($form);
-                Yii::$app->session->setFlash('success', 'Категория успешно добавлен!');
-                return $this->redirect(['view', 'id' => $category->id]);
-            }catch (\Exception $e)
-            {
+            try {
+                $order = $this->manageService->create($form);
+                return $this->redirect(['view', 'id' => $order->id]);
+            } catch (\Exception $e) {
                 Yii::$app->session->setFlash('error', $e->getMessage());
             }
         }
-
         return $this->render('create', [
             'form' => $form,
         ]);
@@ -107,52 +102,67 @@ class CategoryController extends Controller
      */
     public function actionUpdate($id)
     {
-        $category = $this->categories->find($id);
-        $form = new CategoryForm($category);
+        $order = $this->orders->find($id);
+        $form = new OrderForm($order);
+
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
-                $this->manageService->edit($category->id, $form);
-                Yii::$app->session->setFlash('success', 'Категория успешно отредактировано!');
-                return $this->redirect(['view', 'id' => $category->id]);
+                $order = $this->manageService->edit($order->id, $form);
+                return $this->redirect(['view', 'id' => $order->id]);
             } catch (\Exception $e) {
-                Yii::$app->session->setFlash('error', $e->getMessage());
-            } catch (\Throwable $e) {
                 Yii::$app->session->setFlash('error', $e->getMessage());
             }
         }
         return $this->render('update', [
             'form' => $form,
-            'category' => $category,
+            'order' => $order,
         ]);
     }
 
     /**
      * @param $id
      * @return \yii\web\Response
-     * @throws NotFoundHttpException
      * @throws \Throwable
-     * @throws \yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        try {
+            $this->manageService->remove($id);
+        } catch (\Exception $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+        }
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Category model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Category the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Category::findOne($id)) !== null) {
-            return $model;
-        }
+    //- status -//
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+    public function actionStatusNew($id)
+    {
+        try {
+            $this->manageService->statusNew($id);
+        } catch (\Exception $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+        }
+        return $this->redirect(['view', 'id' => $id]);
+    }
+
+    public function actionStatusSold($id)
+    {
+        try {
+            $this->manageService->statusSold($id);
+        } catch (\Exception $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+        }
+        return $this->redirect(['view', 'id' => $id]);
+    }
+
+    public function actionStatusCanceled($id)
+    {
+        try {
+            $this->manageService->statusCanceled($id);
+        } catch (\Exception $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+        }
+        return $this->redirect(['view', 'id' => $id]);
     }
 }

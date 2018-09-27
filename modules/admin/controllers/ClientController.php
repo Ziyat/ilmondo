@@ -97,7 +97,7 @@ class ClientController extends Controller
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
                 $client = $this->manageService->create($form);
-                Yii::$app->session->setFlash('success', 'Клиент успешно добавлен!');
+                Yii::$app->session->setFlash('success', 'Клиент добавлен успешно!');
                 return $this->redirect(['view', 'id' => $client->id]);
 
             } catch (\Exception $e) {

@@ -38,9 +38,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?= Html::img($client->getThumbFileUrl(
                                     'avatar',
                                     'admin',
-                                    Yii::getAlias('@noAvatar')),
+                                    \Yii::getAlias('@noAvatar')),
                                     [
-                                        'class' => 'img-circle media-object'
+                                        'class' => 'img-circle media-object',
+                                        'style' => 'max-width: 50px;'
                                     ]
                                 ) ?>
                             </a>
@@ -99,9 +100,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'name'),
                             [
                                 'multiple' => true,
-                                'options' => ArrayHelper::map($model->clients, 'id', function ($model) {
+                                'options' => ArrayHelper::map($model->clients, 'id', function () {
                                     return ['selected' => true];
-                                })
+                                }),
+                                'prompt' => 'Отвязать клиентов'
                             ]
                         )->label('Клиенты') ?>
                     <?php elseif ($client->status == $client::STATUS_CLIENT): ?>
@@ -112,7 +114,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ->asArray()
                                     ->all(),
                                 'id',
-                                'name')
+                                'name'),
+                            [
+                                'prompt' => 'Выберите диллера'
+                            ]
                         )->label('Назначить диллера') ?>
                     <?php endif; ?>
 

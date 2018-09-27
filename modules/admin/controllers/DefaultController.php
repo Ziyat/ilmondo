@@ -14,10 +14,6 @@ use Yii;
 class DefaultController extends Controller
 {
 
-
-
-
-
     /**
      * @return string
      * @throws \yii\base\InvalidArgumentException

@@ -1,10 +1,10 @@
 <?php
 
 use app\modules\admin\entities\Client;
+use app\modules\admin\helpers\ClientHelpers;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use app\modules\admin\helpers\ClientHelpers;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\admin\search\ClientSearch */
@@ -13,63 +13,68 @@ use app\modules\admin\helpers\ClientHelpers;
 $this->title = 'Клиенты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="client-index">
-    <p>
-        <?= Html::a('Добавить клиента', ['create'], ['class' => 'btn btn-flat btn-success']) ?>
-    </p>
-
-    <?php
-    try {
-        echo GridView::widget([
-            'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel,
-            'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
-                [
-                    'attribute' => 'avatar',
-                    'value' => function (Client $model) {
-                        return Html::img(
-                            $model->getThumbFileUrl(
-                                'avatar',
-                                'admin',
-                                Yii::getAlias('@noAvatar')
-                            ),
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <?= Html::a('Добавить клиента', ['create'], ['class' => 'btn btn-success btn-flat']) ?>
+            </div>
+            <div class="box-body">
+                <?php
+                try {
+                    echo GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        'filterModel' => $searchModel,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
                             [
-                                'class' => 'img-circle'
+                                'value' => function (Client $model) {
+                                    return Html::img(
+                                        $model->getThumbFileUrl(
+                                            'avatar',
+                                            'admin',
+                                            Yii::getAlias('@noAvatar')
+                                        ),
+                                        [
+                                            'class' => 'img-circle',
+                                            'style' => 'max-width: 50px;'
+                                        ]
+                                    );
+                                },
+                                'format' => 'raw'
+                            ],
+                            [
+                                'attribute' => 'name',
+                                'value' => function (Client $model) {
+                                    return Html::a(
+                                        $model->name . ' ' . $model->last_name,
+                                        Url::to(
+                                            [
+                                                '/admin/client/view',
+                                                'id' => $model->id
+                                            ]
+                                        )
+                                    );
+                                },
+                                'format' => 'raw'
+                            ],
+                            'phone',
+                            'email:email',
+                            'address_line_1',
+                            [
+                                'attribute' => 'status',
+                                'value' => function (Client $model) {
+                                    return ClientHelpers::getStatusLabel($model->status);
+                                },
+                                'format' => 'raw'
                             ]
-                        );
-                    },
-                    'format' => 'raw'
-                ],
-                [
-                    'attribute' => 'name',
-                    'value' => function (Client $model) {
-                        return Html::a(
-                            $model->name . ' ' . $model->last_name,
-                            Url::to(
-                                [
-                                    '/admin/client/view',
-                                    'id' => $model->id
-                                ]
-                            )
-                        );
-                    },
-                    'format' => 'raw'
-                ],
-                'phone',
-                'email:email',
-                'address_line_1',
-                [
-                    'attribute' => 'status',
-                    'value' => function (Client $model) {
-                        return ClientHelpers::getStatusLabel($model->status);
-                    },
-                    'format' => 'raw'
-                ]
-            ],
-        ]);
-    } catch (\Exception $e) {
-        echo $e->getMessage();
-    }
-    ?>
+                        ],
+                    ]);
+                } catch (\Exception $e) {
+                    echo $e->getMessage();
+                }
+                ?>
+            </div>
+        </div>
+    </div>
 </div>

@@ -19,7 +19,6 @@ $config = [
         'admin' => [
             'class' => 'app\modules\admin\Module',
             'viewPath' => '@app/modules/admin/views',
-
             'as access' => [
                 'class' => 'yii\filters\AccessControl',
                 'except' => ['auth/login', 'auth/error', 'auth/captcha'],
@@ -78,7 +77,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
-                '<_a:[a-zA-Z0-9]+>' => 'site/<_a>',
+                '<_a:(about|contact|warranty|philosophy|service|partners)>' => 'site/<_a>',
             ],
         ],
 

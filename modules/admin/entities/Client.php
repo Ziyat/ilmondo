@@ -5,6 +5,7 @@ namespace app\modules\admin\entities;
 use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use Yii;
 use yii\db\ActiveQuery;
+use yii\helpers\VarDumper;
 use yiidreamteam\upload\ImageUploadBehavior;
 
 /**
@@ -25,7 +26,7 @@ use yiidreamteam\upload\ImageUploadBehavior;
  * @mixin ImageUploadBehavior
  *
  * @property DealerAssignments $clientAssignments[]
- * @property DealerAssignments $dealerAssignment
+ * @property DealerAssignments $dealerAssignments[]
  * @property $this $dealer
  * @property $this $clients[]
  */
@@ -80,7 +81,10 @@ class Client extends \yii\db\ActiveRecord
         $clients = $this->clientAssignments;
 
         foreach ($clients as $client) {
-            if ($client->isClientId($id)) {
+            /**
+             * @var DealerAssignments $client
+             */
+            if ($id && $client->isClientId($id)) {
                 return;
             }
         }
@@ -91,13 +95,17 @@ class Client extends \yii\db\ActiveRecord
 
     public function assignDealer($id)
     {
-        $dealer = $this->dealerAssignment;
-        if ($dealer) {
-            $dealer->edit($id, $this->id);
-            return;
+        $dealers = $this->dealerAssignments;
+        foreach ($dealers as $dealer) {
+            /**
+             * @var DealerAssignments $dealer
+             */
+            if ($id && $dealer->isDealerId($id)) {
+                return;
+            }
         }
-        $dealer = DealerAssignments::create($id);
-        $this->dealerAssignment = $dealer;
+        $dealers[] = DealerAssignments::create($id);
+        $this->dealerAssignments = $dealers;
     }
 
     public function getClientAssignments(): ActiveQuery
@@ -105,9 +113,9 @@ class Client extends \yii\db\ActiveRecord
         return $this->hasMany(DealerAssignments::class, ['dealer_id' => 'id']);
     }
 
-    public function getDealerAssignment(): ActiveQuery
+    public function getDealerAssignments(): ActiveQuery
     {
-        return $this->hasOne(DealerAssignments::class, ['client_id' => 'id']);
+        return $this->hasMany(DealerAssignments::class, ['client_id' => 'id']);
     }
 
     public function getClients(): ActiveQuery
@@ -117,7 +125,7 @@ class Client extends \yii\db\ActiveRecord
 
     public function getDealer()
     {
-        return $this->hasOne(self::class, ['id' => 'dealer_id'])->via('dealerAssignment');
+        return $this->hasOne(self::class, ['id' => 'dealer_id'])->via('dealerAssignments');
     }
 
 
@@ -128,7 +136,7 @@ class Client extends \yii\db\ActiveRecord
                 'class' => ImageUploadBehavior::class,
                 'attribute' => 'avatar',
                 'thumbs' => [
-                    'admin' => ['width' => 50, 'height' => 50],
+                    'admin' => ['width' => 75, 'height' => 75],
                     'thumb' => ['width' => 300, 'height' => 300],
                 ],
                 'filePath' => '@uploads/store/clients/[[id]]/[[pk]].[[extension]]',
@@ -138,7 +146,7 @@ class Client extends \yii\db\ActiveRecord
             ],
             [
                 'class' => SaveRelationsBehavior::class,
-                'relations' => ['clientAssignments']
+                'relations' => ['clientAssignments','dealerAssignments']
             ]
         ];
     }
@@ -165,6 +173,13 @@ class Client extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return '{{%clients}}';
+    }
+
+    public function transactions()
+    {
+        return [
+            self::SCENARIO_DEFAULT => self::OP_ALL,
+        ];
     }
 
     public function attributeLabels()

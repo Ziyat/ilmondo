@@ -20,6 +20,10 @@ class m180920_180220_create_products_table extends Migration
             'article' => $this->string(),
             'price' => $this->float(),
             'old_price' => $this->float(),
+            'params' => $this->text(),
+            'quantity' => $this->integer(),
+            'main_photo_id' => $this->integer(),
+            'status' => $this->integer()->defaultValue(20),
         ],$tableOptions);
 
         $this->addForeignKey(
