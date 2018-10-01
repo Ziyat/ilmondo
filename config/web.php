@@ -60,6 +60,14 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.jino.ru',  // e.g. smtp.mandrillapp.com or smtp.gmail.com
+                'username' => 'ziyodillamirxanov@gmail.com',
+                'password' => '123987654',
+                'port' => '465', // Port 25 is a very common port too
+                'encryption' => 'ssl', // It is often used, check your provider or mail server specs
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -77,7 +85,19 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
+                'captcha'=>'/site/captcha',
                 '<_a:(about|contact|warranty|philosophy|service|partners)>' => 'site/<_a>',
+
+                'admin' => 'admin/default/index',
+                'admin/<_c:[\w\-]+>' => 'admin/<_c>/index',
+                'admin/<_c:[\w\-]+>/<id:\d+>' => 'admin/<_c>/view',
+                'admin/<_c:[\w\-]+>/<_a:[\w-]+>' => 'admin/<_c>/<_a>',
+
+                '<_c:[\w\-]+>' => '<_c>/index',
+                '<_c:[\w\-]+>/<id:\d+>' => '<_c>/view',
+                '<_c:[\w\-]+>/<slug:[\w\-]+>' => '<_c>/category',
+                '<_c:[\w\-]+>/<_a:[\w-]+>' => '<_c>/<_a>',
+                '<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_c>/<_a>',
             ],
         ],
 

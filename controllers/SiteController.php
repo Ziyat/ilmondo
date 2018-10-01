@@ -2,16 +2,39 @@
 
 namespace app\controllers;
 
+use app\modules\admin\readModels\CategoryReadModel;
+use app\modules\admin\readModels\ProductReadModel;
 use Yii;
-use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
 use app\models\ContactForm;
+
+/**
+ * Created by Madetec-Solution.
+ * Developer: Mirkhanov Z.S.
+ * Class SiteController
+ * @package app\controllers
+ * @property CategoryReadModel $categories
+ * @property ProductReadModel $products
+ */
 
 class SiteController extends Controller
 {
+    public $categories;
+    public $products;
+
+    public function __construct(
+        string $id,
+        $module,
+        CategoryReadModel $categoryReadModel,
+        ProductReadModel $productReadModel,
+        array $config = []
+    )
+    {
+        $this->products = $productReadModel;
+        $this->categories = $categoryReadModel;
+        parent::__construct($id, $module, $config);
+    }
 
     /**
      * {@inheritdoc}
@@ -24,7 +47,8 @@ class SiteController extends Controller
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'minLength' => 4,
+                'maxLength' => 4,
             ],
         ];
     }
@@ -32,10 +56,13 @@ class SiteController extends Controller
     /**
      * @return string
      * @throws \yii\base\InvalidArgumentException
+     * @throws \yii\web\NotFoundHttpException
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index',[
+            'products' => $this->products->findAllActive('id')
+        ]);
     }
 
 
@@ -47,8 +74,7 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
+            Yii::$app->session->setFlash('error','Сообщение успешно отправлено!');
             return $this->refresh();
         }
         return $this->render('contact', [

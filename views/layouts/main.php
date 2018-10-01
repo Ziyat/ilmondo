@@ -2,6 +2,10 @@
 
 use app\assets\AppAsset;
 use app\assets\HeadAppAsset;
+use app\modules\admin\widgets\category\Category;
+use app\modules\admin\widgets\category\PopularCategory;
+use app\modules\admin\widgets\product\PopularProducts;
+use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -42,7 +46,7 @@ HeadAppAsset::register($this);
 
             <div class="header__logo">
                 <a class="logo" href="/">
-                    <img src="images/logo.svg" alt="Homepage">
+                    <img src="/images/logo.svg" alt="Homepage">
                 </a>
             </div>
 
@@ -99,23 +103,21 @@ HeadAppAsset::register($this);
                         </ul>
                     </li>
                     <li class="has-children">
-                        <a href="#0" title="">Коллекции</a>
+                        <a href="#fake" title="">Коллекции</a>
                         <ul class="sub-menu">
-                            <li><a href="category.html">Lifestyle</a></li>
-                            <li><a href="category.html">Health</a></li>
-                            <li><a href="category.html">Family</a></li>
-                            <li><a href="category.html">Management</a></li>
-                            <li><a href="category.html">Travel</a></li>
-                            <li><a href="category.html">Work</a></li>
+                            <li><a href="#fake">SPICA</a></li>
+                            <li><a href="#fake">FULU</a></li>
+                            <li><a href="#fake">AVIOR</a></li>
+                            <li><a href="#fake">ALCOR</a></li>
+                            <li><a href="#fake">MIZAR</a></li>
+                            <li><a href="#fake">SITULA</a></li>
+                            <li><a href="#fake">VERITATE</a></li>
                         </ul>
                     </li>
                     <li class="has-children">
                         <a href="#0" title="">Ювелирные Изделия</a>
                         <ul class="sub-menu">
-                            <li><a href="single-video.html">Video Post</a></li>
-                            <li><a href="single-audio.html">Audio Post</a></li>
-                            <li><a href="single-gallery.html">Gallery Post</a></li>
-                            <li><a href="single-standard.html">Standard Post</a></li>
+                            <?= Category::widget(['type' => 'li']); ?>
                         </ul>
                     </li>
                     <li><a href="<?= Url::to(['site/contact']) ?>" title="">Контакты</a></li>
@@ -151,6 +153,18 @@ HeadAppAsset::register($this);
 
 
 <section class="s-content">
+    <div class="row">
+        <div class="col-full">
+            <?= Alert::widget() ?>
+        </div>
+    </div>
+    <div class="s-content__header col-full">
+        <p class="s-content__tags">
+            <span class="s-content__tag-list">
+                <?= Category::widget(); ?>
+            </span>
+        </p>
+    </div>
     <?= $content ?>
 </section>
 
@@ -163,60 +177,7 @@ HeadAppAsset::register($this);
             <h3>Популярные товары</h3>
 
             <div class="block-1-2 block-m-full popular__posts">
-                <article class="col-block popular__post">
-                    <a href="#0" class="popular__thumb">
-                        <img src="images/products/populate7.jpg" alt="">
-                    </a>
-                    <h5><a href="#0">Модель 1830D</a></h5>
-                    <section class="popular__meta">
-                        <span class="popular__author"> <b>от 1999 руб</b></span>
-                    </section>
-                </article>
-                <article class="col-block popular__post">
-                    <a href="#0" class="popular__thumb">
-                        <img src="images/products/populate2.jpg" alt="">
-                    </a>
-                    <h5><a href="#0">Модель 1860D</a></h5>
-                    <section class="popular__meta">
-                        <span class="popular__author"><b>от 13999 руб</b></span>
-                    </section>
-                </article>
-                <article class="col-block popular__post">
-                    <a href="#0" class="popular__thumb">
-                        <img src="images/products/populate3.jpg" alt="">
-                    </a>
-                    <h5><a href="#0">Модель 4456</a></h5>
-                    <section class="popular__meta">
-                        <span class="popular__author"><b>от 14999 руб</b></span>
-                    </section>
-                </article>
-                <article class="col-block popular__post">
-                    <a href="#0" class="popular__thumb">
-                        <img src="images/products/populate4.jpg" alt="">
-                    </a>
-                    <h5><a href="#0">Модель 1923</a></h5>
-                    <section class="popular__meta">
-                        <span class="popular__author"><b>от 15999 руб</b></span>
-                    </section>
-                </article>
-                <article class="col-block popular__post">
-                    <a href="#0" class="popular__thumb">
-                        <img src="images/products/populate5.jpg" alt="">
-                    </a>
-                    <h5><a href="#0">Модель 7490</a></h5>
-                    <section class="popular__meta">
-                        <span class="popular__author"><b>от 16999 руб</b></span>
-                    </section>
-                </article>
-                <article class="col-block popular__post">
-                    <a href="#0" class="popular__thumb">
-                        <img src="images/products/populate6.jpg" alt="">
-                    </a>
-                    <h5><a href="#0">Модель 8764</a></h5>
-                    <section class="popular__meta">
-                        <span class="popular__author"><b>от 17999 руб</b></span>
-                    </section>
-                </article>
+                <?= PopularProducts::widget(); ?>
             </div>
         </div>
 
@@ -245,18 +206,7 @@ HeadAppAsset::register($this);
 
     </div>
 
-    <div class="row bottom tags-wrap">
-        <div class="col-full tags">
-            <h3>часто ищут</h3>
-
-            <div class="tagcloud">
-                <a href="#0">Обручальные Кольца</a>
-                <a href="#0">Помолвочные Кольца</a>
-                <a href="#0">Изготовление на Заказ</a>
-                <a href="#0">Аксессуары</a>
-            </div>
-        </div>
-    </div>
+    <?= PopularCategory::widget() ?>
 </section>
 
 <footer class="s-footer">
@@ -334,39 +284,36 @@ HeadAppAsset::register($this);
                 <h4>Быстрые ссылки</h4>
 
                 <ul class="s-footer__linklist">
-                    <li><a href="#0">История</a></li>
-                    <li><a href="#0">Философия Бренда</a></li>
-                    <li><a href="#0">Гарантии</a></li>
-                    <li><a href="#0">Сервис</a></li>
-                    <li><a href="#0">Услуги</a></li>
-                    <li><a href="#0">Партнеры</a></li>
+                    <li><a href="<?= Url::to(['site/about']) ?>">О Компании</a></li>
+                    <li><a href="<?= Url::to(['site/philosophy']) ?>">Философия Бренда</a></li>
+                    <li><a href="<?= Url::to(['site/service']) ?>">Услуги</a></li>
+                    <li><a href="<?= Url::to(['site/warranty']) ?>">Гарантии</a></li>
+                    <li><a href="<?= Url::to(['site/partners']) ?>">Партнеры</a></li>
                 </ul>
 
             </div>
 
             <div class="col-two md-four mob-full s-footer__archives">
 
-                <h4>Архивы</h4>
-
+                <h4>Коллекции</h4>
                 <ul class="s-footer__linklist">
-                    <li><a href="#0">Январь 2018</a></li>
-                    <li><a href="#0">Февраль 2018</a></li>
-                    <li><a href="#0">Март 2018</a></li>
-                    <li><a href="#0">Апрель 2018</a></li>
-                    <li><a href="#0">Август 2018</a></li>
-                    <li><a href="#0">Сентябрь 2018</a></li>
+                    <li><a href="#fake">SPICA</a></li>
+                    <li><a href="#fake">FULU</a></li>
+                    <li><a href="#fake">AVIOR</a></li>
+                    <li><a href="#fake">ALCOR</a></li>
+                    <li><a href="#fake">MIZAR</a></li>
+                    <li><a href="#fake">SITULA</a></li>
+                    <li><a href="#fake">VERITATE</a></li>
                 </ul>
 
             </div>
 
             <div class="col-two md-four mob-full s-footer__social">
 
-                <h4>Social</h4>
+                <h4>Ювелирные Изделия</h4>
 
                 <ul class="s-footer__linklist">
-                    <li><a href="#0">Facebook</a></li>
-                    <li><a href="#0">Instagram</a></li>
-                    <li><a href="#0">Pinterest</a></li>
+                    <?= Category::widget(['type' => 'li']); ?>
                 </ul>
 
             </div>
@@ -379,18 +326,6 @@ HeadAppAsset::register($this);
                 <p>Ювелирная компания «IL mondo orafo» В настоящее время одна из лидирующих компаний в сегменте
                     производства женских и мужских обручальных и венчальных колец.</p>
 
-                <div class="subscribe-form">
-                    <form id="mc-form" class="group" novalidate="true">
-
-                        <input type="email" value="" name="EMAIL" class="email" id="mc-email"
-                               placeholder="Эл. Почта" required="">
-
-                        <input type="submit" name="subscribe" value="Отправить">
-
-                        <label for="mc-email" class="subscribe-message"></label>
-
-                    </form>
-                </div>
 
             </div>
 

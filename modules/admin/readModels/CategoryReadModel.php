@@ -21,8 +21,42 @@ class CategoryReadModel
     {
         if(!$category = Category::findOne($id))
         {
-            throw new NotFoundHttpException('Client not found');
+            throw new NotFoundHttpException('Category not found');
         }
         return $category;
     }
+
+    /**
+     * @return array|\yii\db\ActiveRecord[]
+     * @throws NotFoundHttpException
+     */
+    public function findAll()
+    {
+        if(!$categories = Category::find()->all())
+        {
+            throw new NotFoundHttpException('Categories not found');
+        }
+        return $categories;
+    }
+
+    /**
+     * @param $slug
+     * @return Category|null
+     * @throws NotFoundHttpException
+     */
+    public function findBySlug($slug)
+    {
+        if(!$category = Category::findOne(['slug' => $slug]))
+        {
+            throw new NotFoundHttpException('Categories not found');
+        }
+        return $category;
+    }
+
+
+    public function findAllPopular()
+    {
+        return Category::find()->orderBy(['views' => SORT_DESC])->all();
+    }
+
 }

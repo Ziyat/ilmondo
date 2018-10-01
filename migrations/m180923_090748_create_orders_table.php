@@ -3,7 +3,7 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `order`.
+ * Handles the creation of table `orders`.
  */
 class m180923_090748_create_orders_table extends Migration
 {
@@ -12,7 +12,7 @@ class m180923_090748_create_orders_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('{{%order}}', [
+        $this->createTable('{{%orders}}', [
             'id' => $this->primaryKey(),
             'product_id' => $this->integer(),
             'client_id' => $this->integer(),
@@ -21,11 +21,11 @@ class m180923_090748_create_orders_table extends Migration
             'created_at' => $this->integer(),
         ]);
 
-        $this->createIndex('{{%idx-order-product_id}}','{{%order}}','product_id');
-        $this->createIndex('{{%idx-order-client_id}}','{{%order}}','client_id');
+        $this->createIndex('{{%idx-orders-product_id}}','{{%orders}}','product_id');
+        $this->createIndex('{{%idx-orders-client_id}}','{{%orders}}','client_id');
 
-        $this->addForeignKey('{{%fk-order-product_id}}','{{%order}}','product_id','{{%products}}','id','RESTRICT','NO ACTION');
-        $this->addForeignKey('{{%fk-order-client_id}}','{{%order}}','client_id','{{%clients}}','id','RESTRICT','NO ACTION');
+        $this->addForeignKey('{{%fk-orders-product_id}}','{{%orders}}','product_id','{{%products}}','id','RESTRICT','NO ACTION');
+        $this->addForeignKey('{{%fk-orders-client_id}}','{{%orders}}','client_id','{{%clients}}','id','RESTRICT','NO ACTION');
     }
 
     /**
@@ -33,6 +33,6 @@ class m180923_090748_create_orders_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%order}}');
+        $this->dropTable('{{%orders}}');
     }
 }

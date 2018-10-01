@@ -100,7 +100,7 @@ class ProductController extends Controller
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
                 $product = $this->manageService->create($form);
-                Yii::$app->session->setFlash('success', 'Категория успешно добавлен!');
+                Yii::$app->session->setFlash('success', 'Товар успешно добавлен!');
                 return $this->redirect(['view', 'id' => $product->id]);
             } catch (\Exception $e) {
                 Yii::$app->session->setFlash('error', $e->getMessage());
@@ -125,7 +125,7 @@ class ProductController extends Controller
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
                 $this->manageService->edit($product->id, $form);
-                Yii::$app->session->setFlash('success', 'Категория успешно отредактировано!');
+                Yii::$app->session->setFlash('success', 'Товар успешно отредактировано!');
                 return $this->redirect(['view', 'id' => $product->id]);
             } catch (\Exception $e) {
                 Yii::$app->session->setFlash('error', $e->getMessage());

@@ -26,14 +26,13 @@ class AppAsset extends AssetBundle
         'css/vendor.css',
     ];
     public $js = [
-        'js/jquery-3.2.1.min.js',
+//        'js/jquery-3.2.1.min.js',
         'js/jquery.zoom.min.js',
         'js/plugins.js',
-        'https://api-maps.yandex.ru/2.1/?lang=ru_RU',
         'js/main.js',
     ];
     public $depends = [
-//        'yii\web\YiiAsset',
+        'yii\web\YiiAsset',
 //        'yii\bootstrap\BootstrapAsset',
     ];
 }

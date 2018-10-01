@@ -66,6 +66,12 @@
 
 /* custom */
 
+.slick-slide{
+    background-image: url("../images/bg.jpg");
+    background-size: 350px;
+    background-position: center;
+}
+
 .slick-slide img {
     width: 100%;
 }
@@ -86,6 +92,9 @@
  * ------------------------------------------------------------------- */
 html {
     font-size: 10px;
+}
+.help-block{
+    color: red;
 }
 
 @media only screen and (max-width: 400px) {
@@ -1385,7 +1394,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     padding: 0;
 }
 
-.pgn__num {
+.pgn__num a {
     font-family: "metropolis-bold", sans-serif;
     font-size: 1.5rem;
     line-height: 2.4rem;
@@ -1399,22 +1408,22 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     transition: all 0.3s ease-in-out;
 }
 
-.pgn__num:hover {
+.pgn__num a:hover {
     background: #c4c4c4;
     color: #151515;
 }
 
-.pgn .current, .pgn .current:hover {
+.pgn .current a, .pgn .current a:hover {
     background-color: #151515;
     color: #FFFFFF;
 }
 
-.pgn .inactive, .pgn .inactive:hover {
+.pgn .inactive span, .pgn .inactive span:hover {
     color: #888888;
     cursor: default;
 }
 
-.pgn__prev, .pgn__next {
+.pgn__prev a, .pgn__prev span, .pgn__next a, .pgn__next span {
     display: block;
     background-color: #FFFFFF;
     background-repeat: no-repeat;
@@ -1439,7 +1448,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     transform: translateY(-50%);
 }
 
-.pgn__prev:hover, .pgn__next:hover {
+.pgn__prev a:hover, .pgn__next a:hover {
     background-color: #151515;
     color: #FFFFFF;
     text-decoration: none;
@@ -1447,35 +1456,35 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     background-position: center;
 }
 
-.pgn__prev {
+.pgn__prev a, .pgn__prev span {
     background-image: url("../images/icons/icon-arrow-left.svg");
     left: 0;
 }
 
-.pgn__prev:hover {
+.pgn__prev a:hover, .pgn__prev span:hover {
     background-image: url("../images/icons/icon-arrow-left-w.svg");
 }
 
-.pgn__next {
+.pgn__next a, .pgn__next span {
     background-image: url("../images/icons/icon-arrow-right.svg");
     right: 0;
 }
 
-.pgn__next:hover {
+.pgn__next a:hover, .pgn__next span:hover {
     background-image: url("../images/icons/icon-arrow-right-w.svg");
 }
 
-.pgn__prev.inactive, .pgn__next.inactive {
+.pgn__prev.inactive a, .pgn__next.inactive a, .pgn__prev.inactive span, .pgn__next.inactive span {
     background-color: #ffffff;
     opacity: 0.5;
     cursor: default;
 }
 
-.pgn__prev.inactive:hover {
+.pgn__prev.inactive a:hover, .pgn__prev.inactive span:hover {
     background-image: url("../images/icons/icon-arrow-left.svg");
 }
 
-.pgn__next.inactive:hover {
+.pgn__next.inactive a:hover,.pgn__next.inactive span:hover {
     background-image: url("../images/icons/icon-arrow-right.svg");
 }
 
@@ -1676,6 +1685,9 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .masonry .entry__thumb {
+    background-image: url("../images/bg.jpg");
+    background-size: 350px;
+    background-position: center;
     position: relative;
     overflow: hidden;
 }
@@ -2140,7 +2152,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     height: auto;
     width: 100%;
     font-family: "metropolis-semibold", sans-serif;
-    font-size: 6rem;
+    font-size: 4rem;
     line-height: 1.5;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;

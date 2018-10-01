@@ -21,6 +21,7 @@ use yiidreamteam\upload\ImageUploadBehavior;
  * @property string $params
  * @property int $quantity
  * @property int $status
+ * @property int $views
  *
  * @property Photo[] $photos
  * @property Photo $mainPhoto
@@ -59,6 +60,16 @@ class Product extends \yii\db\ActiveRecord
         $this->params = $params;
         $this->quantity = $quantity;
         $this->category_id = $category_id;
+    }
+
+    public function upView()
+    {
+        $this->views++;
+    }
+
+    public function downView()
+    {
+        $this->views--;
     }
 
     /**
@@ -293,6 +304,11 @@ class Product extends \yii\db\ActiveRecord
         }
     }
 
+    /**
+     * @return bool
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
     public function beforeDelete(): bool
     {
         if (parent::beforeDelete()) {

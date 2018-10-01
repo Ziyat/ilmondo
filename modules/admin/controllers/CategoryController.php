@@ -2,15 +2,15 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\entities\Category;
 use app\modules\admin\forms\CategoryForm;
 use app\modules\admin\readModels\CategoryReadModel;
+use app\modules\admin\search\CategorySearch;
 use app\modules\admin\services\CategoryManageService;
 use Yii;
-use app\modules\admin\entities\Category;
-use app\modules\admin\search\CategorySearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
@@ -88,8 +88,7 @@ class CategoryController extends Controller
                 $category = $this->manageService->create($form);
                 Yii::$app->session->setFlash('success', 'Категория успешно добавлен!');
                 return $this->redirect(['view', 'id' => $category->id]);
-            }catch (\Exception $e)
-            {
+            }catch (\Exception $e) {
                 Yii::$app->session->setFlash('error', $e->getMessage());
             }
         }
@@ -135,8 +134,11 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        try {
+            $this->manageService->remove($id);
+        } catch (\Exception $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+        }
         return $this->redirect(['index']);
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\admin\entities;
+use yii\db\ActiveQuery;
 
 /**
  * @property integer $product_id;
@@ -21,6 +22,7 @@ class CategoryAssignment extends \yii\db\ActiveRecord
     {
         return $this->category_id == $id;
     }
+
 
     public static function tableName(): string
     {

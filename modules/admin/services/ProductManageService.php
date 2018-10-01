@@ -184,4 +184,16 @@ class ProductManageService
         $product->removePhoto($photoId);
         $this->products->save($product);
     }
+
+    /**
+     * @param $id
+     * @throws \DomainException
+     * @throws \yii\web\NotFoundHttpException
+     */
+    public function addView($id)
+    {
+        $product = $this->products->find($id);
+        $product->upView();
+        $this->products->save($product);
+    }
 }

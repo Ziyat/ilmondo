@@ -4,12 +4,12 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\ContactForm */
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-use yii\captcha\Captcha;
-
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
+
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
+
 ?>
 <section class="s-content--narrow">
 
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div id="map" style="width: 100%; height: 400px"></div>
         </div> <!-- end s-content__media -->
 
-        <div>
+        <div class="col-six">
             <h4>Москва,ТЦ "Славянский" Никольская улица.<br />
                 Дом 17 строение 1 , офис 109 ,этаж 1</h4>
             <p>м. Лубянка<br /> м. Площадь Революции<br />м. Театральная<br />м. Охотный Ряд</p>
@@ -40,33 +40,47 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href="#">didiamonds@mail.ru</a>
             <h4>Режим работы:</h4>
             <p>Ежедневно с 10:00 до 20:00 без обеда.</p>
-            <form name="cForm" id="cForm" method="post" action="">
-                <fieldset>
-
-                    <div class="form-field">
-                        <input name="cName" type="text" id="cName" class="full-width" placeholder="Your Name" value="">
-                    </div>
-
-                    <div class="form-field">
-                        <input name="cEmail" type="text" id="cEmail" class="full-width" placeholder="Your Email" value="">
-                    </div>
-
-                    <div class="form-field">
-                        <input name="cWebsite" type="text" id="cWebsite" class="full-width" placeholder="Website"  value="">
-                    </div>
-
-                    <div class="message form-field">
-                        <textarea name="cMessage" id="cMessage" class="full-width" placeholder="Your Message" ></textarea>
-                    </div>
-
-                    <button type="submit" class="submit btn btn--primary full-width">Submit</button>
-
-                </fieldset>
-            </form> <!-- end form -->
 
 
         </div> <!-- end s-content__main -->
+        <div class="col-six">
+            <?php $form = ActiveForm::begin(); ?>
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Имя','class' => 'full-width'])->label(false); ?>
+            <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => 'Эл. почта','class' => 'full-width'])->label(false); ?>
+            <?= $form->field($model, 'subject')->textInput(['maxlength' => true, 'placeholder' => 'тема','class' => 'full-width'])->label(false); ?>
+            <?= $form->field($model, 'body')->textInput(['maxlength' => true, 'placeholder' => 'сообющение','class' => 'full-width'])->label(false); ?>
+            <?= $form->field($model, 'verifyCode')->widget(\yii\captcha\Captcha::class, [
+                'template' => '<div class="row"><div class="col-four">{image}</div><div class="col-eight">{input}</div></div>',
+                'options' => ['placeholder' => 'введите код с картинки']
+            ])->label(false) ?>
+            <?= Html::submitButton('Отправить', ['class' => 'submit btn--primary btn--large full-width']) ?>
+            <?php ActiveForm::end(); ?>
+        </div>
 
     </div> <!-- end row -->
 
 </section> <!-- s-content -->
+
+
+<?php
+
+$scriptYandexMap = <<<JS
+ymaps.ready(init);
+    function init(){
+        var myMap = new ymaps.Map("map", {
+            center: [55.75779906898193,37.623015999999964],
+            zoom: 16
+        });
+
+        var myPlacemark = new ymaps.Placemark([55.75779906898193,37.623015999999964], {
+            hintContent: 'Содержимое всплывающей подсказки',
+            balloonContent: 'Содержимое балуна'
+        });
+
+        myMap.geoObjects.add(myPlacemark);
+    }
+JS;
+$this->registerJsFile('https://api-maps.yandex.ru/2.1/?lang=ru_RU');
+
+$this->registerJs($scriptYandexMap);
+

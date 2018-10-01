@@ -53,7 +53,28 @@ class CategoryManageService
         $this->categories->save($category);
     }
 
+    /**
+     * @param $id
+     * @throws \DomainException
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     * @throws \yii\web\NotFoundHttpException
+     */
     public function remove($id): void
     {
+        $category = $this->categories->find($id);
+        $this->categories->remove($category);
+    }
+
+    /**
+     * @param $id
+     * @throws \DomainException
+     * @throws \yii\web\NotFoundHttpException
+     */
+    public function addView($id)
+    {
+        $category = $this->categories->find($id);
+        $category->upView();
+        $this->categories->save($category);
     }
 }

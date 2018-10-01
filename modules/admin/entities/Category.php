@@ -11,6 +11,7 @@ use yiidreamteam\upload\ImageUploadBehavior;
  * @property string $name
  * @property string $slug
  * @property string $image
+ * @property integer $views
  *
  * @property Product[] $products
  * @mixin ImageUploadBehavior
@@ -32,6 +33,16 @@ class Category extends \yii\db\ActiveRecord
         $this->name = $name;
         $this->slug = $slug;
         $this->image = $image;
+    }
+
+    public function upView()
+    {
+        $this->views++;
+    }
+
+    public function downView()
+    {
+        $this->views--;
     }
 
     public static function tableName()

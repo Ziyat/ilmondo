@@ -347,263 +347,35 @@
     };
 
 
-   /* Map
-    * ------------------------------------------------------ */
-
-    // add custom buttons for the zoom-in/zoom-out on the map
-    var clCustomZoomControl = function(controlDiv, map) {
-            
-        // grap the zoom elements from the DOM and insert them in the map 
-        var controlUIzoomIn= document.getElementById('map-zoom-in'),
-                controlUIzoomOut= document.getElementById('map-zoom-out');
-
-        controlDiv.appendChild(controlUIzoomIn);
-        controlDiv.appendChild(controlUIzoomOut);
-
-        // Setup the click event listeners and zoom-in or out according to the clicked element
-        google.maps.event.addDomListener(controlUIzoomIn, 'click', function() {
-            map.setZoom(map.getZoom()+1)
-        });
-        google.maps.event.addDomListener(controlUIzoomOut, 'click', function() {
-            map.setZoom(map.getZoom()-1)
-        });
-            
+    var clProductZoom = function () {
+        $('.zoomImg').zoom();
     };
 
-	var clGoogleMap = function() { 
+    var clProductSlider = function () {
 
-        if (typeof google === 'object' && typeof google.maps === 'object') {
+        $('.productsSliderFor').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.productsSliderNav',
+            mobileFirst: true,
+            responsive: true
 
-            // 37.422424, -122.085661
+        });
 
-            var latitude = 37.422424,
-                longitude = -122.085661,
-                map_zoom = 14,
-                main_color = '#0054a5',
-                saturation_value = -30,
-                brightness_value = 5,
-                marker_url = null,
-                winWidth = $(window).width();
-
-            // show controls
-            $("#map-zoom-in, #map-zoom-out").show();
-
-            // marker url
-            if ( winWidth > 480 ) {
-                marker_url = 'images/icon-location@2x.png';
-            } else {
-                marker_url = 'images/icon-location.png';
-            }
-
-            // map style
-            var style = [ 
-                {
-                    // set saturation for the labels on the map
-                    elementType: "labels",
-                    stylers: [
-                        { saturation: saturation_value }
-                    ]
-                },  
-                {	// poi stands for point of interest - don't show these lables on the map 
-                    featureType: "poi",
-                    elementType: "labels",
-                    stylers: [
-                        {visibility: "off"}
-                    ]
-                },
-                {
-                    // don't show highways lables on the map
-                    featureType: 'road.highway',
-                    elementType: 'labels',
-                    stylers: [
-                        { visibility: "off" }
-                    ]
-                }, 
-                { 	
-                    // don't show local road lables on the map
-                    featureType: "road.local",
-                    elementType: "labels.icon",
-                    stylers: [
-                        { visibility: "off" } 
-                    ] 
-                },
-                { 
-                    // don't show arterial road lables on the map
-                    featureType: "road.arterial",
-                    elementType: "labels.icon",
-                    stylers: [
-                        { visibility: "off" }
-                    ] 
-                },
-                {
-                    // don't show road lables on the map
-                    featureType: "road",
-                    elementType: "geometry.stroke",
-                    stylers: [
-                        { visibility: "off" }
-                    ]
-                }, 
-                // style different elements on the map
-                { 
-                    featureType: "transit", 
-                    elementType: "geometry.fill", 
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                }, 
-                {
-                    featureType: "poi",
-                    elementType: "geometry.fill",
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                },
-                {
-                    featureType: "poi.government",
-                    elementType: "geometry.fill",
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                },
-                {
-                    featureType: "poi.sport_complex",
-                    elementType: "geometry.fill",
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                },
-                {
-                    featureType: "poi.attraction",
-                    elementType: "geometry.fill",
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                },
-                {
-                    featureType: "poi.business",
-                    elementType: "geometry.fill",
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                },
-                {
-                    featureType: "transit",
-                    elementType: "geometry.fill",
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                },
-                {
-                    featureType: "transit.station",
-                    elementType: "geometry.fill",
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                },
-                {
-                    featureType: "landscape",
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                    
-                },
-                {
-                    featureType: "road",
-                    elementType: "geometry.fill",
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                },
-                {
-                    featureType: "road.highway",
-                    elementType: "geometry.fill",
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                }, 
-                {
-                    featureType: "water",
-                    elementType: "geometry",
-                    stylers: [
-                        { hue: main_color },
-                        { visibility: "on" }, 
-                        { lightness: brightness_value }, 
-                        { saturation: saturation_value }
-                    ]
-                }
-            ];
-                
-            // map options
-            var map_options = {
-
-                center: new google.maps.LatLng(latitude, longitude),
-                zoom: 14,
-                panControl: false,
-                zoomControl: false,
-                mapTypeControl: false,
-                streetViewControl: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                scrollwheel: false,
-                styles: style
-
-                };
-
-            // inizialize the map
-            var map = new google.maps.Map(document.getElementById('map-container'), map_options);
-
-            // add a custom marker to the map				
-            var marker = new google.maps.Marker({
-
-                    position: new google.maps.LatLng(latitude, longitude),
-                    map: map,
-                    visible: true,
-                    icon: marker_url
-                    
-                });
-            
-            var zoomControlDiv = document.createElement('div');
-            var zoomControl = new clCustomZoomControl(zoomControlDiv, map);
-
-            // insert the zoom div on the top right of the map
-            map.controls[google.maps.ControlPosition.TOP_RIGHT].push(zoomControlDiv);
-
-        } 
-
+        $('.productsSliderNav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.productsSliderFor',
+            dots: false,
+            centerMode: true,
+            focusOnSelect: true,
+            arrows: false,
+            mobileFirst: true,
+            centerPadding: "0px"
+        });
     };
-
 
    /* Initialize
     * ------------------------------------------------------ */
@@ -622,68 +394,12 @@
         clAOS();
         clAjaxChimp();
         clBackToTop();
-        clGoogleMap();
+        clProductZoom();
+        clProductSlider();
 
     })();
 
     //products slider
 
-    // $('.slider').slick({
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    //     arrows: false,
-    //     fade: true,
-    //     asNavFor: '.slider_nav'
-    // });
 
-    // $('.slider_imgcontent').zoom();
-
-    // $('.slider_nav').slick({
-    //     arrows: false,
-    //     slidesToShow: 1,
-    //     slidesToScroll: 1,
-    //     asNavFor: '.slider',
-    //     centerMode: true,
-    //     focusOnSelect: true,
-    //     centerPadding: '0px',
-    //     vertical: true
-    // });
-    $('.zoomImg').zoom()
-    $('.productsSliderFor').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        asNavFor: '.productsSliderNav',
-        mobileFirst: true,
-        responsive:true
-
-    });
-
-    $('.productsSliderNav').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        asNavFor: '.productsSliderFor',
-        dots: false,
-        centerMode: true,
-        focusOnSelect: true,
-        arrows: false,
-        mobileFirst: true,
-        centerPadding:"0px"
-    });
-        ymaps.ready(init);
-
-    function init(){
-        var myMap = new ymaps.Map("map", {
-            center: [55.75779906898193,37.623015999999964],
-            zoom: 16
-        });
-
-        var myPlacemark = new ymaps.Placemark([55.75779906898193,37.623015999999964], {
-            hintContent: 'Содержимое всплывающей подсказки',
-            balloonContent: 'Содержимое балуна'
-        });
-
-        myMap.geoObjects.add(myPlacemark);
-    }
 })(jQuery);
