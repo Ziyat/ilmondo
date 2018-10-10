@@ -91,7 +91,7 @@
  *
  * ------------------------------------------------------------------- */
 html {
-    font-size: 12px;
+    font-size: 10px;
 }
 .help-block{
     color: red;
@@ -111,11 +111,11 @@ html, body {
 body {
     background: #0e5454;
     font-family: "EB Garamond", sans-serif;
-    font-size: 1.6rem;
+    font-size: 18px;
     font-style: normal;
     font-weight: normal;
     line-height: 1.875;
-    color: #656565;
+    color: #3e3e3e;
     margin: 0;
     padding: 0;
 }
@@ -1196,7 +1196,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     margin-top: 0;
 }
 .price h3{
-    color: #656565;
+    color: #3e3e3e;
     text-decoration: line-through;
     display: inline;
     padding-left: 10px;

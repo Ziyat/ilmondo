@@ -223,7 +223,9 @@
             adaptiveHeight: true,
             pauseOnFocus: false,
             fade: true,
-            cssEase: 'linear'
+            cssEase: 'linear',
+            autoplay: true,
+            autoplaySpeed: 2000,
         });
         
         $('.slider__slide').on('click', function() {
@@ -348,6 +350,8 @@
 
 
     var clProductSlider = function () {
+        $('.productsSliderFor').hide();
+        $('.productsSliderNav').hide();
 
         $('.productsSliderFor').slick({
             slidesToShow: 1,
@@ -371,6 +375,9 @@
             mobileFirst: true,
             centerPadding: "0px"
         });
+
+        $('.productsSliderFor').show();
+        $('.productsSliderNav').show();
     };
 
    /* Initialize
@@ -393,8 +400,6 @@
         clProductSlider();
 
     })();
-
-    //products slider
 
 
 })(jQuery);

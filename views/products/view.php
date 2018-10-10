@@ -5,6 +5,7 @@
  * @var \app\modules\admin\entities\Product $product
  * @var \yii\web\View $this
  */
+
 use yii\helpers\Html;
 
 $this->title = $product->name;
@@ -15,14 +16,14 @@ $this->title = $product->name;
         <div class="slider productsSliderFor">
             <?php
             foreach ($product->photos as $photo) {
-                echo Html::img($photo->getThumbFileUrl('file','large'),['class' => 'zoomImg']);
+                echo Html::img($photo->getThumbFileUrl('file','large'));
             }
             ?>
         </div>
         <div class="slider productsSliderNav ">
             <?php
             foreach ($product->photos as $photo) {
-                echo Html::img($photo->getThumbFileUrl('file','thumb'),['class' => 'zoomImg']);
+                echo Html::img($photo->getThumbFileUrl('file','thumb'));
             }
             ?>
         </div>

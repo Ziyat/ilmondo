@@ -136,13 +136,19 @@ HeadAppAsset::register($this);
             <div class="entry__thumb slider shadow">
                 <div class="slider__slides">
                     <div class="slider__slide">
-                        <img src="<?= Url::to(['images/slider/slide2.jpg']) ?>" alt="">
-                    </div>
-                    <div class="slider__slide">
-                        <img src="<?= Url::to(['images/slider/slide3.jpg']) ?>" alt="">
-                    </div>
-                    <div class="slider__slide">
                         <img src="<?= Url::to(['images/slider/slide4.jpg']) ?>" alt="">
+                    </div>
+                    <div class="slider__slide">
+                        <img src="<?= Url::to(['images/slider/slide5.jpg']) ?>" alt="">
+                    </div>
+                    <div class="slider__slide">
+                        <img src="<?= Url::to(['images/slider/slide6.jpg']) ?>" alt="">
+                    </div>
+                    <div class="slider__slide">
+                        <img src="<?= Url::to(['images/slider/slide7.jpg']) ?>" alt="">
+                    </div>
+                    <div class="slider__slide">
+                        <img src="<?= Url::to(['images/slider/slide8.jpg']) ?>" alt="">
                     </div>
                 </div>
             </div>
