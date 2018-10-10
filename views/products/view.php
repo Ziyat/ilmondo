@@ -38,9 +38,9 @@ $this->title = $product->name;
             <h2>от <?= Yii::$app->formatter->asCurrency($product->price) ?></h2>
             <h3>от <?= Yii::$app->formatter->asCurrency($product->old_price) ?></h3>
         </div>
-        <div class="buttonproduct">
-            <button class="kupit">Заказать</button>
-        </div>
+<!--        <div class="buttonproduct">-->
+<!--            <button class="kupit">Заказать</button>-->
+<!--        </div>-->
         <hr>
         <div class="opisan">
             <h3>Дополнительные параметры:</h3>

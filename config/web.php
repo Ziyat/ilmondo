@@ -86,7 +86,7 @@ $config = [
             'rules' => [
                 '' => 'site/index',
                 'captcha'=>'/site/captcha',
-                '<_a:(about|contact|warranty|philosophy|service|partners)>' => 'site/<_a>',
+                '<_a:(about|contact|warranty|philosophy|service|partners|assortment)>' => 'site/<_a>',
 
                 'admin' => 'admin/default/index',
                 'admin/<_c:[\w\-]+>' => 'admin/<_c>/index',

@@ -61,7 +61,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index',[
-            'products' => $this->products->findAllActive('id')
+            'products' => $this->products->findAllActive()
         ]);
     }
 

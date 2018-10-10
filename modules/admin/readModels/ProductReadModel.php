@@ -11,6 +11,7 @@ use app\modules\admin\entities\Category;
 use app\modules\admin\entities\CategoryAssignment;
 use app\modules\admin\entities\Product;
 use yii\data\ActiveDataProvider;
+use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
@@ -36,6 +37,8 @@ class ProductReadModel
         $query = Product::find()->active();
         if ($orderBy) {
             $query->orderBy([$orderBy => SORT_DESC]);
+        }else{
+            $query->orderBy(new Expression('rand()'));
         }
         return new ActiveDataProvider([
             'query' => $query,

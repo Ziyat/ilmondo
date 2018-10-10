@@ -5,7 +5,7 @@
 $this->title = 'О компании';
 ?>
 <section class="s-content--narrow">
-    <div class="row about">
+    <div class="row about text-center">
         <h2>О Ювелирном Бренде “ IL MONDO ORAFO ”</h2>
         <h3>Ювелирная компания «IL MONDO ORAFO » рада приветствовать Вас! </h3>
         <p>Мы занимаемся продажей и изготовлением свадебных колец и колец для помолвки.
