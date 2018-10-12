@@ -2,12 +2,12 @@
 
 namespace app\controllers;
 
+use app\models\ContactForm;
 use app\modules\admin\readModels\CategoryReadModel;
 use app\modules\admin\readModels\ProductReadModel;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
-use app\models\ContactForm;
 
 /**
  * Created by Madetec-Solution.
@@ -17,7 +17,6 @@ use app\models\ContactForm;
  * @property CategoryReadModel $categories
  * @property ProductReadModel $products
  */
-
 class SiteController extends Controller
 {
     public $categories;
@@ -73,8 +72,12 @@ class SiteController extends Controller
     public function actionContact()
     {
         $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('error','Сообщение успешно отправлено!');
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->contact(Yii::$app->params['feedbackMail'])) {
+                Yii::$app->session->setFlash('success', 'Сообщение успешно отправлено!');
+            } else {
+                Yii::$app->session->setFlash('error', 'Сообщение не отправлено, повторите попытку позже!');
+            }
             return $this->refresh();
         }
         return $this->render('contact', [
@@ -110,10 +113,12 @@ class SiteController extends Controller
     {
         return $this->render('warranty');
     }
+
     public function actionPartners()
     {
         return $this->render('partners');
     }
+
     public function actionPhilosophy()
     {
         return $this->render('philosophy');

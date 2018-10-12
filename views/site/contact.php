@@ -48,7 +48,7 @@ use yii\helpers\Html;
             <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Имя','class' => 'full-width'])->label(false); ?>
             <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'placeholder' => 'Эл. почта','class' => 'full-width'])->label(false); ?>
             <?= $form->field($model, 'subject')->textInput(['maxlength' => true, 'placeholder' => 'тема','class' => 'full-width'])->label(false); ?>
-            <?= $form->field($model, 'body')->textInput(['maxlength' => true, 'placeholder' => 'сообющение','class' => 'full-width'])->label(false); ?>
+            <?= $form->field($model, 'body')->textInput(['maxlength' => true, 'placeholder' => 'сообщение','class' => 'full-width'])->label(false); ?>
             <?= $form->field($model, 'verifyCode')->widget(\yii\captcha\Captcha::class, [
                 'template' => '<div class="row"><div class="col-four">{image}</div><div class="col-eight">{input}</div></div>',
                 'options' => ['placeholder' => 'введите код с картинки']

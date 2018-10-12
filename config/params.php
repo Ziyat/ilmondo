@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'adminEmail' => 'termit_90@mail.ru',
+    'feedbackMail' => 'feedback@ilmondoorafo.ru',
 
 ];
