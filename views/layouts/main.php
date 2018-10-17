@@ -2,9 +2,9 @@
 
 use app\assets\AppAsset;
 use app\assets\HeadAppAsset;
-use app\modules\admin\widgets\category\Category;
-use app\modules\admin\widgets\category\PopularCategory;
-use app\modules\admin\widgets\product\PopularProducts;
+use madetec\crm\widgets\category\Category;
+use madetec\crm\widgets\category\PopularCategory;
+use madetec\crm\widgets\product\PopularProducts;
 use app\widgets\Alert;
 use yii\helpers\Html;
 use yii\helpers\Url;

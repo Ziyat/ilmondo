@@ -17,7 +17,7 @@ $this->title = 'Ювелирный магазин';
 
         <article class="masonry__brick entry format-standard" data-aos="fade-up">
 
-            <a href="#" class="entry__thumb-link">
+            <a href="<?= \yii\helpers\Url::to(['site/service']); ?>" class="entry__thumb-link">
                 <img src="/images/magazine/mag1.jpg" alt="">
             </a>
 
@@ -25,7 +25,8 @@ $this->title = 'Ювелирный магазин';
 
         <article class="masonry__brick entry format-standard" data-aos="fade-up">
 
-            <a href="#" class="entry__thumb-link">
+            <a href="<?= \yii\helpers\Url::to(['products/category', 'slug' => 'vsa-kollekcia']); ?>"
+               class="entry__thumb-link">
                 <img src="/images/magazine/mag2.jpg" alt="">
             </a>
 

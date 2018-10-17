@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use app\models\ContactForm;
-use app\modules\admin\readModels\CategoryReadModel;
-use app\modules\admin\readModels\ProductReadModel;
+use madetec\crm\readModels\CategoryReadModel;
+use madetec\crm\readModels\ProductReadModel;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
@@ -46,8 +46,8 @@ class SiteController extends Controller
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
-                'minLength' => 4,
-                'maxLength' => 4,
+                'minLength' => 6,
+                'maxLength' => 6,
             ],
         ];
     }

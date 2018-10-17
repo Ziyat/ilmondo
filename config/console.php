@@ -8,11 +8,22 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
+
+    // setting admin panel
+
+    'controllerMap' => [
+        'migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => '@vendor/madetec/crm/migrations',
+        ]
+    ],
+
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@tests' => '@app/tests',
     ],
+
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',

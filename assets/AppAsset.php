@@ -30,6 +30,8 @@ class AppAsset extends AssetBundle
 //        'js/jquery.zoom.min.js',
         'js/plugins.js',
         'js/main.js',
+        'js/input-mask/jquery.inputmask.js',
+        'js/input-mask/jquery.inputmask.phone.extensions.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
