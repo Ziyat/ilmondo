@@ -34,7 +34,7 @@ $this->title = 'Ювелирный магазин';
 
         <article class="masonry__brick entry format-standard" data-aos="fade-up">
 
-            <a href="#" class="entry__thumb-link">
+            <a href="<?= \yii\helpers\Url::to(['products/category', 'slug' => 'pomolvocnye']); ?>" class="entry__thumb-link">
                 <img src="/images/magazine/mag4.jpg" alt="">
             </a>
 
@@ -42,7 +42,7 @@ $this->title = 'Ювелирный магазин';
 
         <article class="masonry__brick entry format-standard" data-aos="fade-up">
 
-            <a href="#" class="entry__thumb-link">
+            <a href="<?= \yii\helpers\Url::to(['site/warranty']); ?>" class="entry__thumb-link">
                 <img src="/images/magazine/mag3.jpg" alt="">
             </a>
 

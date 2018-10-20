@@ -2,7 +2,7 @@
 
 use app\assets\AppAsset;
 use app\assets\HeadAppAsset;
-use madetec\crm\widgets\category\Category;
+use app\widgets\category\Category;
 use madetec\crm\widgets\category\PopularCategory;
 use madetec\crm\widgets\product\PopularProducts;
 use app\widgets\Alert;
@@ -105,19 +105,13 @@ HeadAppAsset::register($this);
                     <li class="has-children">
                         <a href="#fake" title="">Коллекции</a>
                         <ul class="sub-menu">
-                            <li><a href="#fake">SPICA</a></li>
-                            <li><a href="#fake">FULU</a></li>
-                            <li><a href="#fake">AVIOR</a></li>
-                            <li><a href="#fake">ALCOR</a></li>
-                            <li><a href="#fake">MIZAR</a></li>
-                            <li><a href="#fake">SITULA</a></li>
-                            <li><a href="#fake">VERITATE</a></li>
+                            <?= Category::widget(['type' => 'li','language' => 'en']); ?>
                         </ul>
                     </li>
                     <li class="has-children">
                         <a href="#0" title="">Ювелирные Изделия</a>
                         <ul class="sub-menu">
-                            <?= Category::widget(['type' => 'li']); ?>
+                            <?= Category::widget(['type' => 'li','language' => 'ru']); ?>
                         </ul>
                     </li>
                     <li><a href="<?= Url::to(['site/contact']) ?>" title="">Контакты</a></li>
@@ -250,13 +244,7 @@ HeadAppAsset::register($this);
 
                 <h4>Коллекции</h4>
                 <ul class="s-footer__linklist">
-                    <li><a href="#fake">SPICA</a></li>
-                    <li><a href="#fake">FULU</a></li>
-                    <li><a href="#fake">AVIOR</a></li>
-                    <li><a href="#fake">ALCOR</a></li>
-                    <li><a href="#fake">MIZAR</a></li>
-                    <li><a href="#fake">SITULA</a></li>
-                    <li><a href="#fake">VERITATE</a></li>
+                    <?= Category::widget(['type' => 'li','language' => 'en']); ?>
                 </ul>
 
             </div>
@@ -266,7 +254,7 @@ HeadAppAsset::register($this);
                 <h4>Ювелирные Изделия</h4>
 
                 <ul class="s-footer__linklist">
-                    <?= Category::widget(['type' => 'li']); ?>
+                    <?= Category::widget(['type' => 'li','language' => 'ru']); ?>
                 </ul>
 
             </div>
