@@ -13,7 +13,6 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-
     'components' => [
         'request' => [
             'cookieValidationKey' => '1O3KI3VfjCB72twDUisvSuNAokClCJk0',
