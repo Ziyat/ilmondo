@@ -2,10 +2,10 @@
 
 use app\assets\AppAsset;
 use app\assets\HeadAppAsset;
-use app\widgets\category\Category;
-use madetec\crm\widgets\category\PopularCategory;
-use madetec\crm\widgets\product\PopularProducts;
 use app\widgets\Alert;
+use app\widgets\category\Category;
+use app\widgets\category\PopularCategory;
+use madetec\crm\widgets\product\PopularProducts;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -46,7 +46,7 @@ HeadAppAsset::register($this);
 
             <div class="header__logo">
                 <a class="logo" href="/">
-                    <img src="/images/logo.svg" alt="Homepage">
+                    <img src="/images/logo.png" alt="Homepage">
                 </a>
             </div>
 
@@ -99,7 +99,7 @@ HeadAppAsset::register($this);
                             <li><a href="<?= Url::to(['site/philosophy']) ?>">Философия Бренда</a></li>
                             <li><a href="<?= Url::to(['site/service']) ?>">Услуги</a></li>
                             <li><a href="<?= Url::to(['site/warranty']) ?>">Гарантии</a></li>
-                            <li><a href="<?= Url::to(['site/partners']) ?>">Партнеры</a></li>
+                            <li><a href="<?= Url::to(['site/partners']) ?>">Партнерам</a></li>
                         </ul>
                     </li>
                     <li class="has-children">
@@ -212,15 +212,10 @@ HeadAppAsset::register($this);
 <footer class="s-footer">
     <div class="socialfooter row">
 
-        <a href="https://www.instagram.com/ilmondoorafo.ru/"><span class="fa-stack fa-lg">
-                <i class="colcircle3 fa fa-circle fa-stack-2x"></i>
-                <i class="colicon fa fa-instagram fa-stack-1x fa-inverse"></i>
-            </span></a>
+        <a href="https://www.instagram.com/ilmondoorafo.ru/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 
-        <a href="https://vk.com/ilmondoorafo"><span class="fa-stack fa-lg">
-                <i class="colcircle8 fa fa-circle fa-stack-2x"></i>
-                <i class="colicon fa fa-vk fa-stack-1x fa-inverse"></i>
-            </span></a>
+        <a href="https://vk.com/ilmondoorafo"><i class="fa fa-vk" aria-hidden="true"></i></a>
+
 
     </div>
     <div class="s-footer__main">

@@ -1,8 +1,7 @@
 <?php
-namespace madetec\crm\widgets\category;
 
-use madetec\crm\readModels\CategoryReadModel;
-use Yii;
+namespace app\widgets\category;
+
 use yii\bootstrap\Widget;
 
 /**
@@ -10,7 +9,7 @@ use yii\bootstrap\Widget;
  * Developer: Mirkhanov Z.S.
  * Class Category
  * @package app\widgets
- * @property CategoryReadModel $categories;
+ * @property \madetec\crm\entities\Category $categories;
  */
 class PopularCategory extends Widget
 {
@@ -19,7 +18,7 @@ class PopularCategory extends Widget
     public function __construct(array $config = [])
     {
         parent::__construct($config);
-        $this->categories = new CategoryReadModel();
+        $this->categories = new \madetec\crm\entities\Category();
     }
 
     /**
@@ -29,7 +28,7 @@ class PopularCategory extends Widget
     public function run()
     {
         try{
-            $categories = $this->categories->findAllPopular();
+            $categories = $this->categories::find()->where(['REGEXP', 'name', '[а-яА-Я0-9]'])->orderBy(['views' => SORT_DESC])->all();
         }catch (\Exception $e){
             $categories = [];
         }

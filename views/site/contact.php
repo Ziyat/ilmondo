@@ -7,8 +7,8 @@
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 
-use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 ?>
 <section class="s-content--narrow">
@@ -57,6 +57,23 @@ use yii\helpers\Html;
             <?php ActiveForm::end(); ?>
         </div>
 
+        <div class="col-twelve">
+            <h1 id="loyaltyCard" style="cursor: pointer">Регистрация скидочной карты</h1>
+            <?php $register = ActiveForm::begin(); ?>
+            <?= $register->field($cardForm, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Ф.И.О', 'class' => 'full-width'])->label(false); ?>
+            <?= $register->field($cardForm, 'email')->textInput(['maxlength' => true, 'placeholder' => 'Эл. почта', 'class' => 'full-width'])->label(false); ?>
+            <?= $register->field($cardForm, 'phone')->textInput(['maxlength' => true, 'placeholder' => 'Телефон', 'class' => 'full-width'])->label(false); ?>
+            <?= $register->field($cardForm, 'dob')->textInput(['maxlength' => true, 'placeholder' => 'Дата рождения', 'class' => 'full-width'])->label(false); ?>
+            <?= $register->field($cardForm, 'cardNumber')->textInput(['maxlength' => true, 'placeholder' => 'Номер карты', 'class' => 'full-width'])->label(false); ?>
+            <?= $register->field($cardForm, 'city')->textInput(['maxlength' => true, 'placeholder' => 'Ваш город', 'class' => 'full-width'])->label(false); ?>
+            <?= $register->field($cardForm, 'verifyCode')->widget(\yii\captcha\Captcha::class, [
+                'template' => '<div class="row"><div class="col-four">{image}</div><div class="col-eight">{input}</div></div>',
+                'options' => ['placeholder' => 'введите код с картинки']
+            ])->label(false) ?>
+            <?= Html::submitButton('Отправить', ['class' => 'submit btn--primary btn--large full-width']) ?>
+            <?php ActiveForm::end(); ?>
+        </div>
+
     </div> <!-- end row -->
 
 </section> <!-- s-content -->
@@ -65,6 +82,13 @@ use yii\helpers\Html;
 <?php
 
 $scriptYandexMap = <<<JS
+$('#loyaltyCard').on('click',function(){
+    $('#w1').toggle(200);
+});
+
+$('#loyaltycardform-phone').inputmask("+7 (999) 999-99-99");
+$('#loyaltycardform-dob').inputmask({alias:"yyyy-mm-dd", placeholder: "гггг-мм-дд",});
+
 ymaps.ready(init);
     function init(){
         var myMap = new ymaps.Map("map", {

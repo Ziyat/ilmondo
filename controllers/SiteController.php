@@ -2,9 +2,13 @@
 
 namespace app\controllers;
 
+use app\forms\LoyaltyCardForm;
 use app\models\ContactForm;
+use madetec\crm\entities\Client;
+use madetec\crm\forms\ClientForm;
 use madetec\crm\readModels\CategoryReadModel;
 use madetec\crm\readModels\ProductReadModel;
+use madetec\crm\services\ClientManageService;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
@@ -16,22 +20,26 @@ use yii\web\Response;
  * @package app\controllers
  * @property CategoryReadModel $categories
  * @property ProductReadModel $products
+ * @property ClientManageService $clientManageService
  */
 class SiteController extends Controller
 {
     public $categories;
     public $products;
+    public $clientManageService;
 
     public function __construct(
         string $id,
         $module,
         CategoryReadModel $categoryReadModel,
         ProductReadModel $productReadModel,
+        ClientManageService $clientManageService,
         array $config = []
     )
     {
         $this->products = $productReadModel;
         $this->categories = $categoryReadModel;
+        $this->clientManageService = $clientManageService;
         parent::__construct($id, $module, $config);
     }
 
@@ -67,11 +75,14 @@ class SiteController extends Controller
 
     /**
      * @return string|Response
+     * @throws \DomainException
      * @throws \yii\base\InvalidArgumentException
      */
     public function actionContact()
     {
         $model = new ContactForm();
+        $form = new LoyaltyCardForm();
+
         if ($model->load(Yii::$app->request->post())) {
             if ($model->contact(Yii::$app->params['feedbackMail'])) {
                 Yii::$app->session->setFlash('success', 'Сообщение успешно отправлено!');
@@ -80,8 +91,34 @@ class SiteController extends Controller
             }
             return $this->refresh();
         }
+
+        if($form->load(Yii::$app->request->post()) && $form->validate()){
+
+            $clientForm = new ClientForm();
+
+            $clientForm->name = $form->name;
+
+            $clientForm->phone = $form->phone;
+
+            $clientForm->email = $form->email;
+
+            $clientForm->address_line_1 = $form->city;
+
+            $clientForm->date_of_birth = $form->dob;
+
+            $clientForm->status = Client::STATUS_CLIENT;
+
+            $clientForm->params = 'Регистрация карты, дата: '. date('d-m-Y H:i:s') . ', номер карты: '.$form->cardNumber;
+
+            $client = $this->clientManageService->create($clientForm);
+
+            Yii::$app->session->setFlash('success', $client->name . ', регистрация Вашей карты успешно завершено!');
+
+        }
+
         return $this->render('contact', [
             'model' => $model,
+            'cardForm' => $form
         ]);
     }
 

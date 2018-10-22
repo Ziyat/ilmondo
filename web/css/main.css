@@ -3567,12 +3567,7 @@ footer .colcircle2{
     color: #414f90;
 }
 footer .colcircle3{
-    /*color: #dd2a7b;*/
-    background: #d6249f;
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-    box-shadow: 0px 3px 10px rgba(0,0,0,.25);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #dd2a7b;
     width: 52px;
 }
 footer .colcircle4{

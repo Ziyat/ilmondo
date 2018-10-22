@@ -32,6 +32,7 @@ class AppAsset extends AssetBundle
         'js/main.js',
         'js/input-mask/jquery.inputmask.js',
         'js/input-mask/jquery.inputmask.phone.extensions.js',
+        'js/input-mask/jquery.inputmask.date.extensions.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
