@@ -71,10 +71,10 @@ HeadAppAsset::register($this);
 
             <div class="header__search">
 
-                <form role="search" method="get" class="header__search-form" action="#">
+                <form role="search" method="get" class="header__search-form" action="/search">
                     <label>
                         <span class="hide-content">Поиск по:</span>
-                        <input type="search" class="search-field" placeholder="Type Keywords" value="" name="s"
+                        <input type="search" class="search-field" placeholder="Type Keywords" value="" name="ProductSearch[article]"
                                title="Поиск по:" autocomplete="off">
                     </label>
                     <input type="submit" class="search-submit" value="Поиск">

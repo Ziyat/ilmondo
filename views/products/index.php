@@ -3,7 +3,7 @@
  * Created by Madetec-Solution.
  * Developer: Mirkhanov Z.S.
  * @var \yii\web\View $this
- * @var \app\modules\admin\entities\Product $products
+ * @var madetec\crm\entities\Product $products
  */
 
 use yii\widgets\ListView;

@@ -8,6 +8,7 @@ use madetec\crm\entities\Client;
 use madetec\crm\forms\ClientForm;
 use madetec\crm\readModels\CategoryReadModel;
 use madetec\crm\readModels\ProductReadModel;
+use app\forms\ProductSearch;
 use madetec\crm\services\ClientManageService;
 use Yii;
 use yii\web\Controller;
@@ -159,6 +160,21 @@ class SiteController extends Controller
     public function actionPhilosophy()
     {
         return $this->render('philosophy');
+    }
+
+    /**
+     * @return string
+     * @throws \yii\base\InvalidArgumentException
+     */
+    public function actionSearch()
+    {
+        $searchModel = new ProductSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('search', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
 }

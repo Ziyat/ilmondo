@@ -130,7 +130,7 @@
             e.stopPropagation();
         });
             
-        searchField.attr({placeholder: ' Введите ключевое слово', autocomplete: 'off'});
+        searchField.attr({placeholder: 'Введите артикул товара', autocomplete: 'off'});
     
     };
 

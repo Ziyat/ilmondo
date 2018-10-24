@@ -50,7 +50,7 @@ $config = [
             'rules' => [
                 '' => 'site/index',
                 'captcha'=>'/site/captcha',
-                '<_a:(about|contact|warranty|philosophy|service|partners|assortment)>' => 'site/<_a>',
+                '<_a:(about|contact|warranty|philosophy|service|partners|assortment|search)>' => 'site/<_a>',
             ],
         ],
 

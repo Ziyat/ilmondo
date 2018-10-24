@@ -2,7 +2,7 @@
 
 /**
  * @var $this yii\web\View
- * @var $products \app\modules\admin\entities\Product
+ * @var $products madetec\crm\entities\Product
  */
 
 use yii\widgets\ListView;
