@@ -22,7 +22,7 @@
         "yii-dream-team/yii2-upload-behavior": "^1.1",
         "la-haute-societe/yii2-save-relations-behavior": "*",
         "kartik-v/yii2-widget-fileinput": "@dev",
-        "madetec/crm": "*"
+        "madetec/crm": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

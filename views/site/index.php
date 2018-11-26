@@ -15,38 +15,7 @@ $this->title = 'Ювелирный магазин';
     <div class="masonry">
         <div class="grid-sizer"></div>
 
-        <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-            <a href="<?= \yii\helpers\Url::to(['site/service']); ?>" class="entry__thumb-link">
-                <img src="/images/magazine/mag1.jpg" alt="">
-            </a>
-
-        </article>
-
-        <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-            <a href="<?= \yii\helpers\Url::to(['products/category', 'slug' => 'vsa-kollekcia']); ?>"
-               class="entry__thumb-link">
-                <img src="/images/magazine/mag2.jpg" alt="">
-            </a>
-
-        </article>
-
-        <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-            <a href="<?= \yii\helpers\Url::to(['products/category', 'slug' => 'pomolvocnye']); ?>" class="entry__thumb-link">
-                <img src="/images/magazine/mag4.jpg" alt="">
-            </a>
-
-        </article>
-
-        <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-            <a href="<?= \yii\helpers\Url::to(['site/warranty']); ?>" class="entry__thumb-link">
-                <img src="/images/magazine/mag3.jpg" alt="">
-            </a>
-
-        </article>
+        <?= \app\widgets\discounts\DiscountWidget::widget(); ?>
 
         <div class="grid-sizer"></div>
         <?php

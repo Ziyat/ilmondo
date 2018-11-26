@@ -3,12 +3,13 @@
 namespace app\controllers;
 
 use app\forms\LoyaltyCardForm;
+use app\forms\ProductSearch;
 use app\models\ContactForm;
 use madetec\crm\entities\Client;
 use madetec\crm\forms\ClientForm;
 use madetec\crm\readModels\CategoryReadModel;
+use madetec\crm\readModels\DiscountReadModel;
 use madetec\crm\readModels\ProductReadModel;
-use app\forms\ProductSearch;
 use madetec\crm\services\ClientManageService;
 use Yii;
 use yii\web\Controller;
@@ -21,12 +22,14 @@ use yii\web\Response;
  * @package app\controllers
  * @property CategoryReadModel $categories
  * @property ProductReadModel $products
+ * @property DiscountReadModel $discounts
  * @property ClientManageService $clientManageService
  */
 class SiteController extends Controller
 {
     public $categories;
     public $products;
+    public $discounts;
     public $clientManageService;
 
     public function __construct(
@@ -34,6 +37,7 @@ class SiteController extends Controller
         $module,
         CategoryReadModel $categoryReadModel,
         ProductReadModel $productReadModel,
+        DiscountReadModel $discountReadModel,
         ClientManageService $clientManageService,
         array $config = []
     )
@@ -41,6 +45,7 @@ class SiteController extends Controller
         $this->products = $productReadModel;
         $this->categories = $categoryReadModel;
         $this->clientManageService = $clientManageService;
+        $this->discounts = $discountReadModel;
         parent::__construct($id, $module, $config);
     }
 
@@ -59,6 +64,19 @@ class SiteController extends Controller
                 'maxLength' => 6,
             ],
         ];
+    }
+
+    /**
+     * @param $slug
+     * @return string
+     * @throws \yii\base\InvalidArgumentException
+     * @throws \yii\web\NotFoundHttpException
+     */
+    public function actionDiscount($slug)
+    {
+        return $this->render('discount',[
+            'discount' => $this->discounts->findBySlug($slug)
+        ]);
     }
 
     /**
