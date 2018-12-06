@@ -5,15 +5,34 @@
  * @var $products madetec\crm\entities\Product
  */
 
+use yii\helpers\Url;
 use yii\widgets\ListView;
 
 $this->title = 'Ювелирный магазин';
 
 ?>
-
 <div class="row masonry-wrap">
     <div class="masonry">
-        <div class="grid-sizer"></div>
+        <article class="masonry__brick entry format-standard" data-aos="fade-up">
+            <a class="entry__thumb-link" href="<?= Url::to(['/site/service']) ?>">
+                <img src="/images/thumbs/banners/500х864-sait-00887.jpg" alt="">
+            </a>
+        </article>
+        <article class="masonry__brick entry format-standard" data-aos="fade-up">
+            <a class="entry__thumb-link" href="<?= Url::to(['/products/vsa-kollekcia']) ?>">
+                <img src="/images/thumbs/banners/500х400-katalog-il.jpg" alt="">
+            </a>
+        </article>
+        <article class="masonry__brick entry format-standard" data-aos="fade-up">
+            <a class="entry__thumb-link" href="<?= Url::to(['products/pomolvocnye']) ?>">
+                <img src="/images/thumbs/banners/500x864-Veritate.jpg" alt="">
+            </a>
+        </article>
+        <article class="masonry__brick entry format-standard" data-aos="fade-up">
+            <a class="entry__thumb-link" href="<?= Url::to(['/site/warranty']) ?>">
+                <img src="/images/thumbs/banners/500х400-varranty-il.jpg" alt="">
+            </a>
+        </article>
 
         <?= \app\widgets\discounts\DiscountWidget::widget(); ?>
 

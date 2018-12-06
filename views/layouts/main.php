@@ -43,7 +43,6 @@ HeadAppAsset::register($this);
 
     <header class="header">
         <div class="header__content row">
-
             <div class="header__logo">
                 <a class="logo" href="/">
                     <img src="/images/logo.png" alt="Homepage">
