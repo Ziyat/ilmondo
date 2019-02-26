@@ -62,8 +62,8 @@ HeadAppAsset::register($this);
             </ul>
 
             <address class="header__info">
-                Ювелирная компания <br>
-                ТЦ Славянский, Никольская ул, 17, строение 2
+                <a href="tel:84957990707">8 (495) 799 07 07</a> &nbsp; | &nbsp; Никольская, ул. 17/2 &nbsp; | &nbsp; <a
+                        href="tel:884993440400">8 (499) 344 04 00</a>
             </address>
 
             <a class="header__search-trigger" href="#0"></a>
@@ -126,26 +126,7 @@ HeadAppAsset::register($this);
 
     <div class="pageheader-content row">
         <div class="col-full">
-            <div class="entry__thumb slider shadow">
-                <div class="slider__slides">
-                    <div class="slider__slide">
-                        <img src="<?= Url::to(['images/slider/slide4.jpg']) ?>" alt="">
-                    </div>
-                    <div class="slider__slide">
-                        <img src="<?= Url::to(['images/slider/slide5.jpg']) ?>" alt="">
-                    </div>
-                    <div class="slider__slide">
-                        <img src="<?= Url::to(['images/slider/slide6.jpg']) ?>" alt="">
-                    </div>
-                    <div class="slider__slide">
-                        <img src="<?= Url::to(['images/slider/slide7.jpg']) ?>" alt="">
-                    </div>
-                    <div class="slider__slide">
-                        <img src="<?= Url::to(['images/slider/slide8.jpg']) ?>" alt="">
-                    </div>
-                </div>
-            </div>
-
+            <?= \app\widgets\slider\SliderWidget::widget(['count' => 6]); ?>
         </div>
     </div>
 </section>

@@ -160,9 +160,44 @@ class SiteController extends Controller
         return $this->render('assortment');
     }
 
+    /**
+     * @return string
+     * @throws \yii\base\InvalidArgumentException
+     */
     public function actionService()
     {
-        return $this->render('service');
+        $data = [
+            (object)[
+                'image' => '/images/services/services_9.jpg',
+                'text' => 'Компания IL MONDO ORAFO рада представить 
+                Вам уникальную возможность по созданию индивидуального украшения любой сложности.'
+            ],
+            (object)[
+                'image' => '/images/services/services_8.jpg',
+                'text' => 'Наши Мастера искусно готовы воплотить в жизнь любую вашу мечту и идею.
+                            Опытные Дизайнеры и Геммологи проконсультируют и сопроводят в выборе метала и камней.'
+            ],
+            (object)[
+                'image' => '/images/services/services_7.jpg',
+                'text' => 'По образцу художественных изделий из Нашего каталога. - Доработка изделия под видение заказчика.'
+            ],
+            (object)[
+                'image' => '/images/services/services_12.jpg',
+                'text' => 'По образцу заказчика: Изделие, эскиз или фото.'
+            ],
+            (object)[
+                'image' => '/images/services/services_2.jpg',
+                'text' => '3D Моделирование. Обрисовка идеи. Разработка эксклюзивного дизайн макета будущего изделия.'
+            ],
+            (object)[
+                'image' => '/images/services/services_1.jpg',
+                'text' => 'Так же Вы можете воспользоваться услугами Геммолога в оценке, 
+                консультации и сопровождение сделок с драгоценными камнями и металлами.'
+            ],
+        ];
+        return $this->render('service', [
+            'data' => $data
+        ]);
     }
 
     public function actionWarranty()
