@@ -62,8 +62,16 @@ HeadAppAsset::register($this);
             </ul>
 
             <address class="header__info">
-                <a href="tel:84957990707">8 (495) 799 07 07</a> &nbsp; | &nbsp; Никольская, ул. 17/2 &nbsp; | &nbsp; <a
-                        href="tel:884993440400">8 (499) 344 04 00</a>
+                <div class="row">
+                    <div class="align-center" style="max-width: 60%;">
+                        <div class="col-four"><a href="tel:84957990707">8 (495) 799 07 07</a></div>
+                        <div class="col-four"><p>Никольская, ул. 17/2</p></div>
+                        <div class="col-four"><a href="tel:884993440400">8 (499) 344 04 00</a></div>
+                    </div>
+                    <div class="col-twelve">
+                        <h2>Изготовление обручальных колец и ювелирных изделий на заказ</h2>
+                    </div>
+                </div>
             </address>
 
             <a class="header__search-trigger" href="#0"></a>

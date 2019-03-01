@@ -11,7 +11,6 @@ use yii\helpers\StringHelper;
 ?>
 
 <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
     <div class="entry__thumb">
         <a href="single-standard.html" class="entry__thumb-link">
             <img src="<?= $model->mainPhoto ? $model->mainPhoto->getThumbFileUrl('file', 'large') : null; ?>" alt="">

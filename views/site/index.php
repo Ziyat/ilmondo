@@ -9,7 +9,25 @@ use yii\helpers\Url;
 use yii\widgets\ListView;
 
 $this->title = 'Ювелирный магазин';
+$this->registerMetaTag([
+    'name' => 'og:title',
+    'content' => $this->title,
+], 'og:title');
 
+$this->registerMetaTag([
+    'name' => 'og:description',
+    'content' => 'Изготовление обручальных колец и ювелирных изделий на заказ',
+], 'og:description');
+
+$this->registerMetaTag([
+    'name' => 'description',
+    'content' => 'Изготовление обручальных колец и ювелирных изделий на заказ',
+], 'description');
+
+$this->registerMetaTag([
+    'name' => 'og:url',
+    'content' => 'http://ilmondoorafo.ru',
+], 'og:url');
 ?>
 <div class="row masonry-wrap">
     <div class="masonry">

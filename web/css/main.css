@@ -2327,7 +2327,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     overflow: hidden;
     padding: 0 75px;
     max-width: 1350px;
-    margin-top: 40px;
+    margin-top: 130px;
 }
 
 
@@ -2361,8 +2361,12 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     font-style: normal;
 }
 
-.header__info a, .header__info a:hover {
+.header__info a, .header__info a:hover,.header__info h2 {
     color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header__info h2 {
+    margin-top: -30px;
 }
 
 /* -------------------------------------------------------------------
@@ -2699,7 +2703,7 @@ body.search-is-visible {
  * ## main navigation
  * ------------------------------------------------------------------- */
 .header__nav-wrap {
-    margin-top: 15px;
+    margin-top: 0px;
     border-top: 1px solid rgba(255, 255, 255, 0.04);
     padding-top: 15px;
 }

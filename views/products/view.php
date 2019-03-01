@@ -15,17 +15,10 @@ $this->title = $product->name;
 
 <div class="row productColFull">
     <div class="col-five align-center">
-        <div class="slider productsSliderFor">
+        <div class="productsSliderFor">
             <?php
             foreach ($product->photos as $photo) {
                 echo Html::img($photo->getThumbFileUrl('file','large'));
-            }
-            ?>
-        </div>
-        <div class="slider productsSliderNav ">
-            <?php
-            foreach ($product->photos as $photo) {
-                echo Html::img($photo->getThumbFileUrl('file','thumb'));
             }
             ?>
         </div>
@@ -73,7 +66,7 @@ $script = <<<JS
     var orderContainer = $('.pokupka');
      orderContainer.on('click','#preOrder', function(){
         $('#formContainer').toggle(200);
-    })
+    });
 JS;
 
 
